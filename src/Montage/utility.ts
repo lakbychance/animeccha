@@ -1,0 +1,40 @@
+
+
+const coverImg = (context:any, img:HTMLImageElement, type:string) => {
+    const imgRatio = img.height / img.width;
+    const winRatio = window.innerHeight / window.innerWidth;
+    if (
+      (imgRatio < winRatio && type === "contain") ||
+      (imgRatio > winRatio && type === "cover")
+    ) {
+      const h = window.innerWidth * imgRatio;
+      context.drawImage(
+        img,
+        0,
+        (window.innerHeight - h) / 2,
+        window.innerWidth,
+        h
+      );
+    }
+    if (
+      (imgRatio > winRatio && type === "contain") ||
+      (imgRatio < winRatio && type === "cover")
+    ) {
+      const w = (window.innerWidth * winRatio) / imgRatio;
+      context.drawImage(img, (window.innerWidth - w) / 2, 0, w, window.innerHeight);
+    }
+  };
+
+const currentFrame = (path:string,index:number) =>
+  `/${path}/${index.toString().padStart(4, "0")}.jpg`; 
+
+const preloadImages = (path:string,frameCount:number) => {
+    for (let i = 1; i < frameCount; i++) {
+      const img = new Image();
+      img.src = currentFrame(path,i);
+    }
+  };
+  
+
+  
+  export {coverImg,currentFrame,preloadImages}
