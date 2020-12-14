@@ -9,11 +9,6 @@ const Home = () => {
     <>
       <motion.div
         className={styles.home}
-        exit={{
-          x: "-100vw",
-          borderRadius: "50%",
-          background: "var( --color-primary-montage-swipe)",
-        }}
         transition={{duration:0.5}}
       >
         <motion.span

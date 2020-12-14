@@ -88,11 +88,6 @@ const Montage = () => {
         className={styles.montage}
         animate={{ scale: [1, 1.3, 1] }}
         transition={{ duration: 0.5 }}
-        exit={{
-          x: "-100vw",
-          borderRadius: "50%",
-          background: "var( --color-primary-montage-swipe)",
-        }}
       >
         {isLoading && (
           <div className={styles.loader}>

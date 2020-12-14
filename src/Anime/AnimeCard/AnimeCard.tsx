@@ -11,19 +11,12 @@ const AnimeCard = ({ title, thumbnailUrl }: any) => {
       opacity: 1,
       y:0
     },
-    exit:{
-        x:'-100vw',
-        transition:{
-            ease:'easeIn'
-        }
-    }
   };
   return (
     <motion.div
       variants={animeCardVariant}
       initial="initial"
       animate="final"
-      exit='exit'
       className={styles.animeCard}
     >
       <div className={styles.animeThumbnail}>
