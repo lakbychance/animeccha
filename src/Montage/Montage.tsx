@@ -18,6 +18,7 @@ const Montage = () => {
   const { montage } = useParams<any>();
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(true);
+  const [images, setImages] = useState<any>([]);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -38,8 +39,10 @@ const Montage = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       const updateImage = (index: number) => {
-        img.src = currentFrame(path, index);
-        coverImg(context, img, "contain");
+        const img = images[index];
+        if (img) {
+          coverImg(context, img, "contain");
+        }
       };
 
       const resizeHandler = () => {
@@ -51,7 +54,6 @@ const Montage = () => {
         const scrollTop = html.scrollTop;
         const maxScrollTop = html.scrollHeight - window.innerHeight;
         const scrollFraction = scrollTop / maxScrollTop;
-        console.log(html.scrollHeight, html.scrollTop);
         const frameIndex = Math.min(
           frames - 1,
           Math.ceil(scrollFraction * frames)
@@ -60,15 +62,24 @@ const Montage = () => {
       };
       window.addEventListener("resize", resizeHandler);
       window.addEventListener("scroll", scrollLogic);
-      preloadImages(path, frames).then(() => {
-        setIsLoading(false);
-      });
       return () => {
         window.removeEventListener("resize", resizeHandler);
         window.removeEventListener("scroll", scrollLogic);
       };
     }
-  }, [history, montage]);
+  }, [history, montage, images]);
+
+  useEffect(() => {
+    if (!montage || !montageMap[montage]) {
+      history.push("/home");
+      return;
+    }
+    const { path, frames } = montageMap[montage];
+    preloadImages(path, frames).then((images: any) => {
+      setIsLoading(false);
+      setImages([...images]);
+    });
+  }, []);
 
   return (
     <>
@@ -79,7 +90,7 @@ const Montage = () => {
         transition={{ duration: 0.5 }}
         exit={{
           x: "-100vw",
-          borderRadius:'50%',
+          borderRadius: "50%",
           background: "var( --color-primary-montage-swipe)",
         }}
       >
