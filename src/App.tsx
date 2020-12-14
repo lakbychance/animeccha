@@ -20,6 +20,7 @@ function App() {
     <div className="appContainer">
       {!location.pathname.includes("home") && (
         <img
+          alt="Back Button"
           className="backBtn"
           src={backBtn}
           onClick={() => history.goBack()}

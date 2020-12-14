@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { AnimeCard, Layout } from "../components";
-import { animeMap, AnimeProps } from "../constants/constants";
+import { animeMap } from "../constants/constants";
 import styles from "./Anime.module.css";
 
 const Anime = () => {
@@ -14,7 +14,7 @@ const Anime = () => {
       history.push("/home");
       return;
     }
-  }, [history]);
+  }, [anime,history]);
   const animeDetail = animeMap[anime];
   return (
     <motion.div
