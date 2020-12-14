@@ -79,7 +79,7 @@ const Montage = () => {
       setIsLoading(false);
       setImages([...images]);
     });
-  }, []);
+  }, [history,montage]);
 
   return (
     <>
