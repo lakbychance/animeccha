@@ -1,20 +1,42 @@
+import { motion } from "framer-motion";
 import React from "react";
 import { Link } from "react-router-dom";
-import { AnimeCard } from "../components";
+import { AnimeCard, Layout } from "../components";
 import { AnimeHome, animes } from "../constants/constants";
-import styles from './Home.module.css'
+import styles from "./Home.module.css";
 const Home = () => {
   return (
-      <div className={styles.animeList}>
-      {animes.map((anime: AnimeHome) => {
-        const {title,thumbnailUrl,path} = anime;
-        return (
-            <Link to={`/anime/${path}`}>
-              <AnimeCard title={title} thumbnailUrl={thumbnailUrl}/>
-            </Link>
-        );
-      })}
-      </div>
+    <>
+      <motion.div
+        className={styles.home}
+        exit={{
+          x: "-100vw",
+          borderRadius: "50%",
+          background: "var( --color-primary-montage-swipe)",
+        }}
+        transition={{duration:0.5}}
+      >
+        <motion.span
+          className={styles.homeHeading}
+          initial={{ x: "-100vw" }}
+          animate={{ x: 0 }}
+        >
+          Animeccha
+        </motion.span>
+        <Layout>
+          {animes.map((anime: AnimeHome) => {
+            const { title, thumbnailUrl, path } = anime;
+            return (
+              <div>
+                <Link to={`/anime/${path}`}>
+                  <AnimeCard title={title} thumbnailUrl={thumbnailUrl} />
+                </Link>
+              </div>
+            );
+          })}
+        </Layout>
+      </motion.div>
+    </>
   );
 };
 

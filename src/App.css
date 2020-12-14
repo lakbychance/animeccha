@@ -1,5 +1,19 @@
 .appContainer{
     background:var(--color-primary-bg);
+    height: 100vh;
     display: flex;
     justify-content: center;
+    width:100vw;
+}
+.backBtn{
+    height: 40px;
+    position: fixed;
+    left: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    filter: invert(1);
+    top: 10px;
+    background: white;
+    z-index: 1000;
+    width: 40px;
 }

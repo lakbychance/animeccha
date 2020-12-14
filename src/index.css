@@ -7,11 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-[data-color-mode=light]{
-  --color-primary-bg:white;
-}
-[data-color-mode=dark]{
+:root{
   --color-primary-bg:black;
+  --color-primary-text:white;
+  --color-primary-montage-swipe:orange;
 }
 
 code {

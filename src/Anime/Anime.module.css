@@ -2,6 +2,12 @@
 display: flex;
 flex-direction: column;
 align-items: center;
+height: 100vh;
+overflow: auto;
+}
+.animeTitle{
+    color: var(--color-primary-text);
+    font-size: 2.5rem;
 }
 .animeMontages{
     display:grid;

@@ -1,8 +1,12 @@
-.animeList{
+.home{
     align-items: center;
-    display:flex;
+    display: flex;
     flex-direction: column;
-    min-width: 300px;
-    max-width: 500px;
-    margin-top: 10px;
+    height: 100vh;
+    overflow: auto;
+}
+.homeHeading{
+    color: var(--color-primary-text);
+    font-size: 2.5rem;
+
 }
