@@ -1,0 +1,22 @@
+.animeCard {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.animeTitle {
+  font-size: 20px;
+  text-decoration: none;
+}
+.animeThumbnail {
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  width:90%;
+}
+.animeThumbnail > img {
+  width: 100%;
+  height: 100%;
+}

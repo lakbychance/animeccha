@@ -6,6 +6,7 @@ import Home from "./Home/Home";
 
 function App() {
   return (
+    <div className='appContainer' data-color-mode='light'>
     <Router>
       <Switch>
       <Route exact path="/home" component={Home} />
@@ -14,6 +15,7 @@ function App() {
       <Redirect path="/" to="/home"></Redirect>
       </Switch>
     </Router>
+    </div>
   );
 }
 

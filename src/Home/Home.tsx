@@ -1,20 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Anime } from "../components";
-import { animes } from "../constants/constants";
+import { AnimeCard } from "../components";
+import { AnimeHome, animes } from "../constants/constants";
+import styles from './Home.module.css'
 const Home = () => {
   return (
-    <section>
-      {animes.map((anime: any) => {
+      <div className={styles.animeList}>
+      {animes.map((anime: AnimeHome) => {
+        const {title,thumbnailUrl,path} = anime;
         return (
-          <div>
-            <Link to={`/anime/${anime.path}`}>
-              <span>{anime.title}</span>
+            <Link to={`/anime/${path}`}>
+              <AnimeCard title={title} thumbnailUrl={thumbnailUrl}/>
             </Link>
-          </div>
         );
       })}
-    </section>
+      </div>
   );
 };
 

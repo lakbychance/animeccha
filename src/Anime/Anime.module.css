@@ -1,3 +1,22 @@
+.anime{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
 .animeMontages{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 10px;
+}
 
+.animeMontages>div{
+ margin-top: 10px;
+}
+
+@media only screen and (max-width:600px){
+    .animeMontages{
+    display: flex;
+    flex-direction: column;
+    align-items:  center;
+    }
 }

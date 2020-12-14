@@ -1,0 +1,8 @@
+.animeList{
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 500px;
+    margin-top: 10px;
+}

@@ -1,0 +1,5 @@
+.appContainer{
+    background:var(--color-primary-bg);
+    display: flex;
+    justify-content: center;
+}

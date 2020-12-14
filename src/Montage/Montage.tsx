@@ -11,9 +11,6 @@ const Montage = () => {
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
 
     if (!montage || !montageMap[montage]) {
       history.push("/home");
@@ -45,15 +42,18 @@ const Montage = () => {
         const scrollTop = html.scrollTop;
         const maxScrollTop = html.scrollHeight - window.innerHeight;
         const scrollFraction = scrollTop / maxScrollTop;
+        console.log(html.scrollHeight, html.scrollTop);
         const frameIndex = Math.min(
           frames - 1,
           Math.ceil(scrollFraction * frames)
         );
-        updateImage(frameIndex + 1);
+        requestAnimationFrame(()=>updateImage(frameIndex + 1));
       };
       window.addEventListener("resize", resizeHandler);
       window.addEventListener("scroll", scrollLogic);
-      preloadImages(path, frames);
+      preloadImages(path, frames).then(()=>{
+        setIsLoading(false);
+      });
       return () => {
         window.removeEventListener("resize", resizeHandler);
         window.removeEventListener("scroll", scrollLogic);
@@ -65,7 +65,7 @@ const Montage = () => {
     <>
       {isLoading && <span>Loading that montage</span>}
       <div
-        style={isLoading ? { visibility: "hidden",height:"100vh" } : {}}
+        style={isLoading ? { visibility: "hidden", height: "100vh" } : {}}
         className={styles.montage}
       >
         <canvas className={styles.canvas} ref={canvasRef} />

@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import {
-  Route,
-  BrowserRouter as Router,
-  Redirect,
   Link,
   useParams,
   useHistory,
 } from "react-router-dom";
+import { AnimeCard,Layout } from "../components";
 import { animeMap, AnimeProps } from "../constants/constants";
 import styles from "./Anime.module.css";
 
@@ -17,31 +15,31 @@ const Anime = () => {
 
   useEffect(() => {
     if (!anime || !animeMap[anime]) {
-        console.log("o")
       history.push("/home");
       return;
     }
   }, [history]);
   const animeDetail = animeMap[anime];
   return (
-      <>
+      <div className={styles.anime}>
     {animeDetail && (
       <>
         <span>{animeDetail.title}</span>
-        <section className={styles.animeMontages}>
+        <Layout>
           {animeDetail.montages.map((montage: any) => {
+            const {title,thumbnailUrl} = montage;
             return (
               <div className={styles.montage}>
                 <Link to={montage.path}>
-                  <span>{montage.title}</span>
+                  <AnimeCard title={title} thumbnailUrl={thumbnailUrl}/>
                 </Link>
               </div>
             );
           })}
-        </section>
+        </Layout>
       </>
     )}
-    </>
+    </div>
   );
 };
 export default Anime;
