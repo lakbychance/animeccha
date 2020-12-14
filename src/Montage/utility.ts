@@ -1,6 +1,3 @@
-import { resolve } from "dns";
-
-
 const coverImg = (context:any, img:HTMLImageElement, type:string) => {
     const imgRatio = img.height / img.width;
     const winRatio = window.innerHeight / window.innerWidth;
@@ -44,7 +41,7 @@ const preloadImages = (path:string,frameCount:number) => {
       }));
 
     }
-    return new Promise((resolve,reject)=>{
+    return new Promise((resolve)=>{
       Promise.all(imagePromisesArray).then(images=>{
         resolve(images.filter(Boolean))
       })

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { coverImg, currentFrame, preloadImages } from "./utility";
-import { montageMap, MontageProps } from "../constants/constants";
+import { montageMap } from "../constants/constants";
 import styles from "./Montage.module.css";
 import { useHistory, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
