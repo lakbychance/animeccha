@@ -17,8 +17,9 @@ const montageVariants = {
 const Montage = () => {
   const { montage } = useParams<any>();
   const history = useHistory();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [images, setImages] = useState<any>([]);
+  const isMounted = useRef(true);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -31,17 +32,26 @@ const Montage = () => {
     const canvas = canvasRef.current;
     if (canvas) {
       const context = canvas.getContext("2d");
-      const img = new Image();
-      img.src = currentFrame(path, 1);
-      img.onload = function () {
-        coverImg(context, img, "contain");
-      };
+      // const img = new Image();
+      // img.src = currentFrame(path, 1);
+      // img.onload = function () {
+      //   coverImg(context, img, "contain");
+      // };
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       const updateImage = (index: number) => {
+        console.log(index)
         const img = images[index];
         if (img) {
           coverImg(context, img, "contain");
+        } else {
+          const newImg = new Image();
+          newImg.src = currentFrame(path, index);
+          newImg.onload = () => {
+            const updatedImages = [...images];
+            updatedImages[index] = newImg;
+            setImages(updatedImages)
+          }
         }
       };
 
@@ -63,6 +73,7 @@ const Montage = () => {
       window.addEventListener("resize", resizeHandler);
       window.addEventListener("scroll", scrollLogic);
       return () => {
+        isMounted.current = false;
         window.removeEventListener("resize", resizeHandler);
         window.removeEventListener("scroll", scrollLogic);
       };
@@ -75,11 +86,14 @@ const Montage = () => {
       return;
     }
     const { path, frames } = montageMap[montage];
-    preloadImages(path, frames).then((images: any) => {
-      setIsLoading(false);
-      setImages([...images]);
-    });
-  }, [history,montage]);
+    // preloadImages(path, frames, isMounted.current).then((images: any) => {
+    //   isMounted && setIsLoading(false);
+    //   isMounted && setImages([...images]);
+    // });
+    return () => {
+      isMounted.current = false;
+    };
+  }, [history, montage]);
 
   return (
     <>
