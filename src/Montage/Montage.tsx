@@ -160,7 +160,6 @@ const Montage = () => {
             )}
           </div>
         )}
-        {isResolved && !images.length}
         <canvas
           style={isLoading ? { visibility: "hidden" } : {}}
           className={styles.canvas}
