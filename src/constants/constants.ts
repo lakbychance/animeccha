@@ -19,6 +19,13 @@ export interface AnimeHome {
 export const DRAGONBALL = "dragonball";
 export const BOKUNOHERO = "bokunohero";
 
+export enum STATUS{
+  IDLE='idle',
+  PENDING='pending',
+  RESOLVED='resolved',
+  REJECTED='rejected'
+}
+
 export const animes: AnimeHome[] = [
   {
     title: "Dragon Ball",

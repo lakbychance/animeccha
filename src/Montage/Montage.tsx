@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { coverImg, currentFrame, preloadImages } from "./utility";
-import { montageMap } from "../constants/constants";
+import { montageMap, STATUS } from "../constants/constants";
 import styles from "./Montage.module.css";
 import { useHistory, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -17,7 +17,7 @@ const montageVariants = {
 const Montage = () => {
   const { montage } = useParams<any>();
   const history = useHistory();
-  const [isLoading, setIsLoading] = useState(true);
+  const [status, setStatus] = useState(STATUS.IDLE);
   const [images, setImages] = useState<any>([]);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -42,6 +42,13 @@ const Montage = () => {
         const img = images[index];
         if (img) {
           coverImg(context, img, "contain");
+        } else if (!Number.isNaN(index)) {
+          setStatus(STATUS.PENDING);
+          preloadImages(path, index, frames + 1).then((newImages: any) => {
+            const updatedImages = [...images].concat(newImages);
+            setImages(updatedImages);
+            setStatus(STATUS.RESOLVED);
+          });
         }
       };
 
@@ -76,23 +83,16 @@ const Montage = () => {
     }
     const { path, frames } = montageMap[montage];
     preloadImages(path, 1, Math.floor(frames / 2)).then((images: any) => {
-      setIsLoading(false);
+      setStatus(STATUS.RESOLVED);
       setImages([...images]);
-      preloadImages(path, Math.floor(frames / 2), frames).then(
-        (newImages: any) => {
-          const updatedImages = [...images].concat(newImages);
-          setImages(updatedImages);
-        }
-      );
     });
   }, [history, montage]);
 
+  const isLoading = status === STATUS.IDLE || status === STATUS.PENDING;
   return (
     <>
       <motion.div
-        style={
-          isLoading ? { height: "100vh" } : { }
-        }
+        style={isLoading ? { height: "100vh" } : {}}
         className={styles.montage}
         animate={{ scale: [1, 1.3, 1] }}
         transition={{ duration: 0.5 }}
