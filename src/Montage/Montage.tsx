@@ -48,15 +48,7 @@ const Montage = () => {
         const img = images[index];
         if (img) {
           coverImg(context, img, "contain");
-        } else if (!Number.isNaN(index) && index >= 1 && index <= frames) {
-          setStatus(STATUS.PENDING);
-          preloadImages(path, index,index+1).then((newImage: any) => {
-            const updatedImages = [...images];
-            updatedImages[index] = newImage;
-            setImages(updatedImages);
-            setStatus(STATUS.RESOLVED);
-          });
-        }
+        } 
       };
 
       const resizeHandler = () => {
@@ -89,15 +81,9 @@ const Montage = () => {
       return;
     }
     const { path, frames } = montageMap[montage];
-    preloadImages(path, 1, Math.floor(frames / 2)).then((images: any) => {
+    preloadImages(path, 1, frames).then((images: any) => {
       setStatus(STATUS.RESOLVED);
       setImages([...images]);
-      preloadImages(path, Math.floor(frames/2), frames + 1).then((newImages: any) => {
-        const updatedImages = [...images].concat(newImages);
-        setImages(updatedImages);
-        setStatus(STATUS.RESOLVED);
-      });
-
     });
   }, [history, montage]);
 
