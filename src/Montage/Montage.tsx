@@ -99,13 +99,15 @@ const Montage = () => {
     }
   }, [status]);
 
-  const isLoading = status === STATUS.IDLE || status === STATUS.PENDING;
-  const isIdle = status === STATUS.IDLE;
+  const isLoading = status === STATUS.PENDING && !images.length;
+  const isIdle = status === STATUS.IDLE && !images.length;
   const { frames } = montageMap[montage];
   return (
     <>
       <motion.div
-        style={isLoading ? { height: "100vh" } : { height: `${frames}vh` }}
+        style={
+          isLoading || isIdle ? { height: "100vh" } : { height: `${frames}vh` }
+        }
         className={styles.montage}
         animate={{ scale: [1, 1.3, 1] }}
         transition={{ duration: 0.5 }}
@@ -122,7 +124,7 @@ const Montage = () => {
             }}
           ></motion.img>
         )}
-        {isLoading && !images.length && (
+        {isLoading && (
           <div className={styles.loader}>
             <motion.div
               className={styles.ballContainer}
@@ -149,18 +151,22 @@ const Montage = () => {
             >
               Yo anime lover, loading your montage...
             </motion.span>
-            {isIdle && (
-              <div className={styles.refreshHint}>
-                <span>This is taking longer than expected.</span>
-                <button onClick={() => window.location.reload()}>
-                  Refresh Page
-                </button>
-              </div>
-            )}
           </div>
         )}
+        {isIdle && (
+          <motion.div
+            className={styles.refreshHint}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <span>This is taking longer than expected.</span>
+            <button onClick={() => window.location.reload()}>
+              Refresh Page
+            </button>
+          </motion.div>
+        )}
         <canvas
-          style={isLoading && !images.length ? { visibility: "hidden" } : {}}
+          style={isLoading ? { visibility: "hidden" } : {}}
           className={styles.canvas}
           ref={canvasRef}
         />

@@ -37,10 +37,14 @@
 }
 .refreshHint{
   align-items: center;
+  backdrop-filter: blur(20px);
   color: var(--color-primary-text);
-  display: flex;
+  display: flex;   
+  height: 100%;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  z-index: 1000;
 }
 .refreshHint>button{
   background:var(--color-primary-text);
