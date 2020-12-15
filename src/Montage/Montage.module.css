@@ -35,6 +35,20 @@
   height: 500vh;
   width: 100vw;
 }
+.refreshHint{
+  align-items: center;
+  color: var(--color-primary-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.refreshHint>button{
+  background:var(--color-primary-text);
+  border:none;
+  border-radius: 5px;
+  height:30px;
+  margin-top: 5px;
+}
 .scrollIndicator{
   top:30px;
   filter: invert(1);

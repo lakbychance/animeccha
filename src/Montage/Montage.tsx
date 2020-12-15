@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { coverImg, currentFrame, preloadImages } from "./utility";
 import { montageMap, STATUS } from "../constants/constants";
 import styles from "./Montage.module.css";
 import { useHistory, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import scrollIndicator from '../assets/scrollIndicator.svg'
+import scrollIndicator from "../assets/scrollIndicator.svg";
 const montageVariants = {
   initial: {},
   final: {
@@ -18,9 +18,9 @@ const montageVariants = {
 const Montage = () => {
   const { montage } = useParams<any>();
   const history = useHistory();
-  const [status, setStatus] = useState(STATUS.IDLE);
+  const [status, setStatus] = useState(STATUS.PENDING);
   const [images, setImages] = useState<any>([]);
-  const [canScroll,setCanScroll] = useState(false);
+  const [canScroll, setCanScroll] = useState(false);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -41,14 +41,13 @@ const Montage = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       const updateImage = (index: number) => {
-        if(canScroll)
-        {
+        if (canScroll) {
           setCanScroll(false);
         }
         const img = images[index];
         if (img) {
           coverImg(context, img, "contain");
-        } 
+        }
       };
 
       const resizeHandler = () => {
@@ -73,7 +72,7 @@ const Montage = () => {
         window.removeEventListener("scroll", scrollLogic);
       };
     }
-  }, [history, montage, images,canScroll]);
+  }, [history, montage, images, canScroll]);
 
   useEffect(() => {
     if (!montage || !montageMap[montage]) {
@@ -87,28 +86,43 @@ const Montage = () => {
     });
   }, [history, montage]);
 
-  useEffect(()=>{
+  useEffect(() => {
+    const isLoading = status === STATUS.PENDING;
+    if (isLoading) {
+      setTimeout(() => {
+        setStatus(STATUS.IDLE);
+      }, 30000);
+    }
     const isLoaded = status === STATUS.RESOLVED;
-    if(isLoaded){
+    if (isLoaded) {
       setCanScroll(true);
     }
-  },[status])
+  }, [status]);
 
   const isLoading = status === STATUS.IDLE || status === STATUS.PENDING;
-  const {frames} = montageMap[montage];
+  const isIdle = status === STATUS.IDLE;
+  const isResolved = status === STATUS.RESOLVED;
+  const { frames } = montageMap[montage];
   return (
     <>
       <motion.div
-        style={isLoading ? { height: "100vh" } : {height:`${frames}vh`}}
+        style={isLoading ? { height: "100vh" } : { height: `${frames}vh` }}
         className={styles.montage}
         animate={{ scale: [1, 1.3, 1] }}
         transition={{ duration: 0.5 }}
       >
-        {canScroll && <motion.img src={scrollIndicator} className={styles.scrollIndicator} animate={{
-          y:[-10,10]
-        }} transition={{
-          yoyo:Infinity
-        }}></motion.img>}
+        {canScroll && (
+          <motion.img
+            src={scrollIndicator}
+            className={styles.scrollIndicator}
+            animate={{
+              y: [-10, 10],
+            }}
+            transition={{
+              yoyo: Infinity,
+            }}
+          ></motion.img>
+        )}
         {isLoading && (
           <div className={styles.loader}>
             <motion.div
@@ -136,8 +150,17 @@ const Montage = () => {
             >
               Yo anime lover, loading your montage...
             </motion.span>
+            {isIdle && !images.length && (
+                <div className={styles.refreshHint}>
+                  <span>This is taking longer than expected.</span>
+                  <button onClick={() => window.location.reload()}>
+                    Refresh Page
+                  </button>
+                </div>
+              )}
           </div>
         )}
+        {isResolved && !images.length}
         <canvas
           style={isLoading ? { visibility: "hidden" } : {}}
           className={styles.canvas}
