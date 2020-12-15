@@ -93,11 +93,11 @@ export const montageMap = {
   },
   "goku-kamehameha-kefla": {
     path: `${DRAGONBALL}/goku-kamehameha-kefla`,
-    frames: 340,
+    frames: 356,
   },
   "midoriya-vs-muscular":{
     path:`${BOKUNOHERO}/midoriya-vs-muscular`,
-    frames:388
+    frames:389
   },
   "allmight-vs-allforone":{
     path:`${BOKUNOHERO}/allmight-vs-allforone`,
@@ -105,6 +105,6 @@ export const montageMap = {
   },
   "midoriya-vs-todoroki":{
     path:`${BOKUNOHERO}/midoriya-vs-todoroki`,
-    frames:469
+    frames:468
   }
 } as any;
