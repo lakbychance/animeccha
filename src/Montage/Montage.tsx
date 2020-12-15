@@ -101,7 +101,6 @@ const Montage = () => {
 
   const isLoading = status === STATUS.IDLE || status === STATUS.PENDING;
   const isIdle = status === STATUS.IDLE;
-  const isResolved = status === STATUS.RESOLVED;
   const { frames } = montageMap[montage];
   return (
     <>
