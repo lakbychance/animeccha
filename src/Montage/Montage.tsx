@@ -75,16 +75,24 @@ const Montage = () => {
       return;
     }
     const { path, frames } = montageMap[montage];
-    preloadImages(path, frames).then((images: any) => {
+    preloadImages(path, 1, Math.floor(frames / 2)).then((images: any) => {
       setIsLoading(false);
       setImages([...images]);
+      preloadImages(path, Math.floor(frames / 2), frames).then(
+        (newImages: any) => {
+          const updatedImages = [...images].concat(newImages);
+          setImages(updatedImages);
+        }
+      );
     });
-  }, [history,montage]);
+  }, [history, montage]);
 
   return (
     <>
       <motion.div
-        style={isLoading ? { height: "100vh" } : {}}
+        style={
+          isLoading ? { height: "100vh" } : { }
+        }
         className={styles.montage}
         animate={{ scale: [1, 1.3, 1] }}
         transition={{ duration: 0.5 }}

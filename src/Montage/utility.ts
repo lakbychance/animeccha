@@ -26,9 +26,9 @@ const coverImg = (context:any, img:HTMLImageElement, type:string) => {
 const currentFrame = (path:string,index:number) =>
   `/${path}/${index.toString().padStart(4, "0")}.jpg`; 
 
-const preloadImages = (path:string,frameCount:number) => {
+const preloadImages = (path:string,initial:number,frameCount:number) => {
   const imagePromisesArray:any = [];
-    for (let i = 1; i < frameCount; i++) {
+    for (let i = initial; i < frameCount; i++) {
       imagePromisesArray.push(new Promise((resolve,reject)=>{
         const img = new Image();
         img.onload=()=>{
