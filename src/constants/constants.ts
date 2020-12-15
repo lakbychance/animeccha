@@ -94,6 +94,11 @@ export const animeMap = {
         title: "Tanjiro vs Susamaru",
         thumbnailUrl: `/${DEMONSLAYER}/tanjiro-vs-susamaru/0297.jpg?nf_resize=fit&w=300`,
       },
+      {
+        path: `${DEMONSLAYER}/tanjiro-vs-rui`,
+        title: "Tanjiro vs Rui",
+        thumbnailUrl: `/${DEMONSLAYER}/tanjiro-vs-rui/0057.jpg?nf_resize=fit&w=300`,
+      },
     ],
   },
 } as any;
@@ -126,5 +131,9 @@ export const montageMap = {
   "tanjiro-vs-susamaru":{
     path: `${DEMONSLAYER}/tanjiro-vs-susamaru`,
     frames:334
+  },
+  "tanjiro-vs-rui":{
+    path: `${DEMONSLAYER}/tanjiro-vs-rui`,
+    frames:497
   }
 } as any;
