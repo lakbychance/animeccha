@@ -52,17 +52,17 @@ export const animeMap = {
       {
         path: `${DRAGONBALL}/goku-turns-blue-broly`,
         title: "Goku Turns Blue facing Broly",
-        thumbnailUrl: `/${DRAGONBALL}/goku-turns-blue-broly/0004.jpg?nf_resize=fit&w=300`,
+        thumbnailUrl: `/${DRAGONBALL}/goku-turns-blue-broly/0004.jpg`,
       },
       {
         path: `${DRAGONBALL}/goku-turns-super-saiyan`,
         title: "Goku Turns Super Saiyan for the first time",
-        thumbnailUrl: `/${DRAGONBALL}/goku-turns-super-saiyan/0004.jpg?nf_resize=fit&w=300`,
+        thumbnailUrl: `/${DRAGONBALL}/goku-turns-super-saiyan/0004.jpg`,
       },
       {
         path: `${DRAGONBALL}/goku-kamehameha-kefla`,
         title: "Goku vs Kefla - Kamehameha",
-        thumbnailUrl: `/${DRAGONBALL}/goku-kamehameha-kefla/0004.jpg?nf_resize=fit&w=300`,
+        thumbnailUrl: `/${DRAGONBALL}/goku-kamehameha-kefla/0004.jpg`,
       },
     ] as AnimeHome[],
   },
@@ -72,17 +72,17 @@ export const animeMap = {
       {
         path: `${BOKUNOHERO}/midoriya-vs-muscular`,
         title: "Midoriya vs Muscular",
-        thumbnailUrl: `/${BOKUNOHERO}/midoriya-vs-muscular/0385.jpg?nf_resize=fit&w=300`,
+        thumbnailUrl: `/${BOKUNOHERO}/midoriya-vs-muscular/0385.jpg`,
       },
       {
         path: `${BOKUNOHERO}/allmight-vs-allforone`,
         title: "All Might vs All For One",
-        thumbnailUrl: `/${BOKUNOHERO}/allmight-vs-allforone/0138.jpg?nf_resize=fit&w=300`,
+        thumbnailUrl: `/${BOKUNOHERO}/allmight-vs-allforone/0138.jpg`,
       },
       {
         path: `${BOKUNOHERO}/midoriya-vs-todoroki`,
         title: "Midoriya vs Todoroki",
-        thumbnailUrl: `/${BOKUNOHERO}/midoriya-vs-todoroki/0374.jpg?nf_resize=fit&w=300`,
+        thumbnailUrl: `/${BOKUNOHERO}/midoriya-vs-todoroki/0374.jpg`,
       },
     ],
   },
@@ -92,12 +92,12 @@ export const animeMap = {
       {
         path: `${DEMONSLAYER}/tanjiro-vs-susamaru`,
         title: "Tanjiro vs Susamaru",
-        thumbnailUrl: `/${DEMONSLAYER}/tanjiro-vs-susamaru/0297.jpg?nf_resize=fit&w=300`,
+        thumbnailUrl: `/${DEMONSLAYER}/tanjiro-vs-susamaru/0297.jpg`,
       },
       {
         path: `${DEMONSLAYER}/tanjiro-vs-rui`,
         title: "Tanjiro vs Rui",
-        thumbnailUrl: `/${DEMONSLAYER}/tanjiro-vs-rui/0057.jpg?nf_resize=fit&w=300`,
+        thumbnailUrl: `/${DEMONSLAYER}/tanjiro-vs-rui/0057.jpg`,
       },
     ],
   },
