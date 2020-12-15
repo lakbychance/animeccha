@@ -4,6 +4,7 @@ import { montageMap, STATUS } from "../constants/constants";
 import styles from "./Montage.module.css";
 import { useHistory, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import scrollIndicator from '../assets/scrollIndicator.svg'
 const montageVariants = {
   initial: {},
   final: {
@@ -19,6 +20,7 @@ const Montage = () => {
   const history = useHistory();
   const [status, setStatus] = useState(STATUS.IDLE);
   const [images, setImages] = useState<any>([]);
+  const [canScroll,setCanScroll] = useState(false);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -39,6 +41,10 @@ const Montage = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       const updateImage = (index: number) => {
+        if(canScroll)
+        {
+          setCanScroll(false);
+        }
         const img = images[index];
         if (img) {
           coverImg(context, img, "contain");
@@ -75,7 +81,7 @@ const Montage = () => {
         window.removeEventListener("scroll", scrollLogic);
       };
     }
-  }, [history, montage, images]);
+  }, [history, montage, images,canScroll]);
 
   useEffect(() => {
     if (!montage || !montageMap[montage]) {
@@ -95,6 +101,13 @@ const Montage = () => {
     });
   }, [history, montage]);
 
+  useEffect(()=>{
+    const isLoaded = status === STATUS.RESOLVED;
+    if(isLoaded){
+      setCanScroll(true);
+    }
+  },[status])
+
   const isLoading = status === STATUS.IDLE || status === STATUS.PENDING;
   return (
     <>
@@ -104,6 +117,11 @@ const Montage = () => {
         animate={{ scale: [1, 1.3, 1] }}
         transition={{ duration: 0.5 }}
       >
+        {canScroll && <motion.img src={scrollIndicator} className={styles.scrollIndicator} animate={{
+          y:[-10,10]
+        }} transition={{
+          yoyo:Infinity
+        }}></motion.img>}
         {isLoading && (
           <div className={styles.loader}>
             <motion.div

@@ -35,3 +35,11 @@
   height: 500vh;
   width: 100vw;
 }
+.scrollIndicator{
+  top:30px;
+  filter: invert(1);
+  position: fixed;
+  height: 50px;
+  width:50px;
+  background:url('../assets/scrollIndicator.svg')
+}
