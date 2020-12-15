@@ -22,7 +22,7 @@ const Home = () => {
           {animes.map((anime: AnimeHome) => {
             const { title, thumbnailUrl, path } = anime;
             return (
-              <div>
+              <div key={title}>
                 <Link to={`/anime/${path}`}>
                   <AnimeCard title={title} thumbnailUrl={thumbnailUrl} />
                 </Link>

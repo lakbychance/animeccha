@@ -34,7 +34,7 @@ const Anime = () => {
             {animeDetail.montages.map((montage: any) => {
               const { title, thumbnailUrl } = montage;
               return (
-                <div className={styles.montage}>
+                <div className={styles.montage} key={title}>
                   <Link to={montage.path}>
                     <AnimeCard title={title} thumbnailUrl={thumbnailUrl} />
                   </Link>
