@@ -46,17 +46,17 @@ export const animeMap = {
       {
         path: `${DRAGONBALL}/goku-turns-blue-broly`,
         title: "Goku Turns Blue facing Broly",
-        thumbnailUrl: `/${DRAGONBALL}/goku-turns-blue-broly/0004.jpg`,
+        thumbnailUrl: `/${DRAGONBALL}/goku-turns-blue-broly/0004.jpg?nf_resize=fit&w=300`,
       },
       {
         path: `${DRAGONBALL}/goku-turns-super-saiyan`,
         title: "Goku Turns Super Saiyan for the first time",
-        thumbnailUrl: `/${DRAGONBALL}/goku-turns-super-saiyan/0004.jpg`,
+        thumbnailUrl: `/${DRAGONBALL}/goku-turns-super-saiyan/0004.jpg?nf_resize=fit&w=300`,
       },
       {
         path: `${DRAGONBALL}/goku-kamehameha-kefla`,
         title: "Goku vs Kefla - Kamehameha",
-        thumbnailUrl: `/${DRAGONBALL}/goku-kamehameha-kefla/0004.jpg`,
+        thumbnailUrl: `/${DRAGONBALL}/goku-kamehameha-kefla/0004.jpg?nf_resize=fit&w=300`,
       },
     ] as AnimeHome[],
   },
@@ -66,17 +66,17 @@ export const animeMap = {
       {
         path: `${BOKUNOHERO}/midoriya-vs-muscular`,
         title: "Midoriya vs Muscular",
-        thumbnailUrl: `/${BOKUNOHERO}/midoriya-vs-muscular/0385.jpg`,
+        thumbnailUrl: `/${BOKUNOHERO}/midoriya-vs-muscular/0385.jpg?nf_resize=fit&w=300`,
       },
       {
         path: `${BOKUNOHERO}/allmight-vs-allforone`,
         title: "All Might vs All For One",
-        thumbnailUrl: `/${BOKUNOHERO}/allmight-vs-allforone/0138.jpg`,
+        thumbnailUrl: `/${BOKUNOHERO}/allmight-vs-allforone/0138.jpg?nf_resize=fit&w=300`,
       },
       {
         path: `${BOKUNOHERO}/midoriya-vs-todoroki`,
         title: "Midoriya vs Todoroki",
-        thumbnailUrl: `/${BOKUNOHERO}/midoriya-vs-todoroki/0374.jpg`,
+        thumbnailUrl: `/${BOKUNOHERO}/midoriya-vs-todoroki/0374.jpg?nf_resize=fit&w=300`,
       },
     ],
   },
