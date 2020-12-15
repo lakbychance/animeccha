@@ -42,10 +42,11 @@ const Montage = () => {
         const img = images[index];
         if (img) {
           coverImg(context, img, "contain");
-        } else if (!Number.isNaN(index)) {
+        } else if (!Number.isNaN(index) && index >= 1 && index <= frames) {
           setStatus(STATUS.PENDING);
-          preloadImages(path, index, frames + 1).then((newImages: any) => {
-            const updatedImages = [...images].concat(newImages);
+          preloadImages(path, index,index+1).then((newImage: any) => {
+            const updatedImages = [...images];
+            updatedImages[index] = newImage;
             setImages(updatedImages);
             setStatus(STATUS.RESOLVED);
           });
@@ -85,6 +86,12 @@ const Montage = () => {
     preloadImages(path, 1, Math.floor(frames / 2)).then((images: any) => {
       setStatus(STATUS.RESOLVED);
       setImages([...images]);
+      preloadImages(path, Math.floor(frames/2), frames + 1).then((newImages: any) => {
+        const updatedImages = [...images].concat(newImages);
+        setImages(updatedImages);
+        setStatus(STATUS.RESOLVED);
+      });
+
     });
   }, [history, montage]);
 
