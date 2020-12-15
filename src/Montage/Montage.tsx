@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { coverImg, currentFrame, preloadImages } from "./utility";
 import { montageMap, STATUS } from "../constants/constants";
 import styles from "./Montage.module.css";
@@ -123,7 +123,7 @@ const Montage = () => {
             }}
           ></motion.img>
         )}
-        {isLoading && (
+        {isLoading && !images.length && (
           <div className={styles.loader}>
             <motion.div
               className={styles.ballContainer}
@@ -150,14 +150,14 @@ const Montage = () => {
             >
               Yo anime lover, loading your montage...
             </motion.span>
-            {isIdle && !images.length && (
-                <div className={styles.refreshHint}>
-                  <span>This is taking longer than expected.</span>
-                  <button onClick={() => window.location.reload()}>
-                    Refresh Page
-                  </button>
-                </div>
-              )}
+            {isIdle && (
+              <div className={styles.refreshHint}>
+                <span>This is taking longer than expected.</span>
+                <button onClick={() => window.location.reload()}>
+                  Refresh Page
+                </button>
+              </div>
+            )}
           </div>
         )}
         {isResolved && !images.length}
