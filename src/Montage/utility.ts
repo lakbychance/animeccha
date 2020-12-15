@@ -24,7 +24,7 @@ const coverImg = (context:any, img:HTMLImageElement, type:string) => {
   };
 
 const currentFrame = (path:string,index:number) =>
-  `/${path}/${index.toString().padStart(4, "0")}.jpg`; 
+  `/${path}/${index.toString().padStart(4, "0")}.jpg?nf_resize=fit&w=${window.innerWidth}`; 
 
 const preloadImages = (path:string,initial:number,frameCount:number) => {
   const imagePromisesArray:any = [];
