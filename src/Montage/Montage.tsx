@@ -95,10 +95,11 @@ const Montage = () => {
   },[status])
 
   const isLoading = status === STATUS.IDLE || status === STATUS.PENDING;
+  const {frames} = montageMap[montage];
   return (
     <>
       <motion.div
-        style={isLoading ? { height: "100vh" } : {}}
+        style={isLoading ? { height: "100vh" } : {height:`${frames}vh`}}
         className={styles.montage}
         animate={{ scale: [1, 1.3, 1] }}
         transition={{ duration: 0.5 }}
