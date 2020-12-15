@@ -18,12 +18,13 @@ export interface AnimeHome {
 
 export const DRAGONBALL = "dragonball";
 export const BOKUNOHERO = "bokunohero";
+export const DEMONSLAYER = "demonslayer";
 
-export enum STATUS{
-  IDLE='idle',
-  PENDING='pending',
-  RESOLVED='resolved',
-  REJECTED='rejected'
+export enum STATUS {
+  IDLE = "idle",
+  PENDING = "pending",
+  RESOLVED = "resolved",
+  REJECTED = "rejected",
 }
 
 export const animes: AnimeHome[] = [
@@ -36,6 +37,11 @@ export const animes: AnimeHome[] = [
     title: "Boku No Hero",
     path: BOKUNOHERO,
     thumbnailUrl: `/${BOKUNOHERO}/thumbnail.jpg`,
+  },
+  {
+    title: "Demon Slayer",
+    path: DEMONSLAYER,
+    thumbnailUrl: `${DEMONSLAYER}/thumbnail.jpg`,
   },
 ];
 
@@ -80,6 +86,16 @@ export const animeMap = {
       },
     ],
   },
+  demonslayer: {
+    title: "Demon Slayer",
+    montages: [
+      {
+        path: `${DEMONSLAYER}/tanjiro-vs-susamaru`,
+        title: "Tanjiro vs Susamaru",
+        thumbnailUrl: `/${DEMONSLAYER}/tanjiro-vs-susamaru/0297.jpg?nf_resize=fit&w=300`,
+      },
+    ],
+  },
 } as any;
 
 export const montageMap = {
@@ -95,16 +111,20 @@ export const montageMap = {
     path: `${DRAGONBALL}/goku-kamehameha-kefla`,
     frames: 356,
   },
-  "midoriya-vs-muscular":{
-    path:`${BOKUNOHERO}/midoriya-vs-muscular`,
-    frames:389
+  "midoriya-vs-muscular": {
+    path: `${BOKUNOHERO}/midoriya-vs-muscular`,
+    frames: 389,
   },
-  "allmight-vs-allforone":{
-    path:`${BOKUNOHERO}/allmight-vs-allforone`,
-    frames:500
+  "allmight-vs-allforone": {
+    path: `${BOKUNOHERO}/allmight-vs-allforone`,
+    frames: 500,
   },
-  "midoriya-vs-todoroki":{
-    path:`${BOKUNOHERO}/midoriya-vs-todoroki`,
-    frames:468
+  "midoriya-vs-todoroki": {
+    path: `${BOKUNOHERO}/midoriya-vs-todoroki`,
+    frames: 468,
+  },
+  "tanjiro-vs-susamaru":{
+    path: `${DEMONSLAYER}/tanjiro-vs-susamaru`,
+    frames:334
   }
 } as any;
