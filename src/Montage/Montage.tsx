@@ -1,5 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { coverImg, preloadImages , preloadImageBlobUrls, createImage} from "./utility";
+import {
+  coverImg,
+  preloadImages,
+  preloadImageBlobUrls,
+  createImage,
+} from "./utility";
 import { montageMap, STATUS } from "../constants/constants";
 import styles from "./Montage.module.css";
 import { useHistory, useParams } from "react-router-dom";
@@ -21,6 +26,7 @@ const Montage = () => {
   const [status, setStatus] = useState(STATUS.PENDING);
   const [images, setImages] = useState<any>([]);
   const [canScroll, setCanScroll] = useState(false);
+  const blobUrls = useRef([]);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -79,21 +85,24 @@ const Montage = () => {
     //   setStatus(STATUS.RESOLVED);
     //   setImages([...images]);
     // });
-      preloadImageBlobUrls(path,1,frames).then(async(imageBlobUrls:any)=>{
-        const imagePromises = imageBlobUrls.map(async (url:any) => {
-          if (url) {
-            return await createImage(url);
-          }
-        });
-        const imageElements = await Promise.all(imagePromises);
-        setImages(imageElements.filter(Boolean));
-        setStatus(STATUS.RESOLVED);
-        imageBlobUrls.forEach((imageBlobUrl:any)=>{
-          if(imageBlobUrl){
-             URL.revokeObjectURL(imageBlobUrl);
-          }
-        })
-      })
+    preloadImageBlobUrls(path, 1, frames).then(async (imageBlobUrls: any) => {
+      blobUrls.current = imageBlobUrls;
+      const imagePromises = blobUrls.current.map(async (url: any) => {
+        if (url) {
+          return await createImage(url);
+        }
+      });
+      const imageElements = await Promise.all(imagePromises);
+      setImages(imageElements.filter(Boolean));
+      setStatus(STATUS.RESOLVED);
+    });
+    return () => {
+      blobUrls.current.forEach((imageBlobUrl: any) => {
+        if (imageBlobUrl) {
+          URL.revokeObjectURL(imageBlobUrl);
+        }
+      });
+    };
   }, [history, montage]);
 
   useEffect(() => {
