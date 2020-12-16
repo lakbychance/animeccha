@@ -79,12 +79,12 @@ const Montage = () => {
     //   setStatus(STATUS.RESOLVED);
     //   setImages([...images]);
     // });
-      preloadImageBlobUrls(path,1,frames).then(async (imageBlobUrls:any)=>{
-        const imagePromises = imageBlobUrls.map(async (imageBlobUrl:any)=>{
-          if(imageBlobUrl){
-             return await createImage(imageBlobUrl);
+      preloadImageBlobUrls(path,1,frames).then(async(imageBlobUrls:any)=>{
+        const imagePromises = imageBlobUrls.map(async (url:any) => {
+          if (url) {
+            return await createImage(url);
           }
-        })
+        });
         const imageElements = await Promise.all(imagePromises);
         setImages(imageElements.filter(Boolean));
         setStatus(STATUS.RESOLVED);
