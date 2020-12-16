@@ -19,6 +19,7 @@ export interface AnimeHome {
 export const DRAGONBALL = "dragonball";
 export const BOKUNOHERO = "bokunohero";
 export const DEMONSLAYER = "demonslayer";
+export const ONEPUNCHMAN = "onepunchman";
 
 export enum STATUS {
   IDLE = "idle",
@@ -41,7 +42,12 @@ export const animes: AnimeHome[] = [
   {
     title: "Demon Slayer",
     path: DEMONSLAYER,
-    thumbnailUrl: `${DEMONSLAYER}/thumbnail.jpg`,
+    thumbnailUrl: `/${DEMONSLAYER}/thumbnail.jpg`,
+  },
+  {
+    title: "One Punch Man",
+    path: ONEPUNCHMAN,
+    thumbnailUrl: `/${ONEPUNCHMAN}/thumbnail.jpg`,
   },
 ];
 
@@ -101,6 +107,16 @@ export const animeMap = {
       },
     ],
   },
+  onepunchman:{
+    title:"One Punch Man",
+    montages:[
+      {
+        path:`${ONEPUNCHMAN}/saitama-vs-genos`,
+        title:"Saitama vs Genos",
+        thumbnailUrl: `/${ONEPUNCHMAN}/saitama-vs-genos/0120.jpg`
+      }
+    ]
+  }
 } as any;
 
 export const montageMap = {
@@ -135,5 +151,9 @@ export const montageMap = {
   "tanjiro-vs-rui":{
     path: `${DEMONSLAYER}/tanjiro-vs-rui`,
     frames:497
+  },
+  "saitama-vs-genos":{
+    path: `${ONEPUNCHMAN}/saitama-vs-genos`,
+    frames:500
   }
 } as any;
