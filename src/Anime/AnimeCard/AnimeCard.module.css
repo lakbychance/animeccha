@@ -16,6 +16,9 @@
   display: flex;
   justify-content: center;
   overflow: hidden;
+  min-width: 100%;
+  min-height: 150px;
+  background: #f6f7f8;
   width: 100%;
 }
 .imageContainer {
