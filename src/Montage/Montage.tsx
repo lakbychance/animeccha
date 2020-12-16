@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { coverImg, currentFrame, preloadImages } from "./utility";
+import { coverImg, preloadImages , preloadImageBlobUrls, createImage} from "./utility";
 import { montageMap, STATUS } from "../constants/constants";
 import styles from "./Montage.module.css";
 import { useHistory, useParams } from "react-router-dom";
@@ -28,16 +28,11 @@ const Montage = () => {
       history.push("/home");
       return;
     }
-    const { path, frames } = montageMap[montage];
+    const { frames } = montageMap[montage];
     const html = document.documentElement;
     const canvas = canvasRef.current;
     if (canvas) {
       const context = canvas.getContext("2d");
-      const img = new Image();
-      img.src = currentFrame(path, 1);
-      img.onload = function () {
-        coverImg(context, img, "contain");
-      };
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       const updateImage = (index: number) => {
@@ -80,10 +75,25 @@ const Montage = () => {
       return;
     }
     const { path, frames } = montageMap[montage];
-    preloadImages(path, 1, frames).then((images: any) => {
-      setStatus(STATUS.RESOLVED);
-      setImages([...images]);
-    });
+    // preloadImages(path, 1, frames).then((images: any) => {
+    //   setStatus(STATUS.RESOLVED);
+    //   setImages([...images]);
+    // });
+      preloadImageBlobUrls(path,1,frames).then(async (imageBlobUrls:any)=>{
+        const imagePromises = imageBlobUrls.map(async (imageBlobUrl:any)=>{
+          if(imageBlobUrl){
+             return await createImage(imageBlobUrl);
+          }
+        })
+        const imageElements = await Promise.all(imagePromises);
+        setImages(imageElements.filter(Boolean));
+        setStatus(STATUS.RESOLVED);
+        imageBlobUrls.forEach((imageBlobUrl:any)=>{
+          if(imageBlobUrl){
+             URL.revokeObjectURL(imageBlobUrl);
+          }
+        })
+      })
   }, [history, montage]);
 
   useEffect(() => {

@@ -47,7 +47,40 @@ const preloadImages = (path:string,initial:number,frameCount:number) => {
       })
     })
   };
+
+  export const preloadImageBlobUrls = async (path:string,initial:number,frameCount:number) => {
+    const imageBlobUrlsArray:any = [];
+    for (let i = initial; i < frameCount; i++) {
+      try{
+        const response = await fetch(currentFrame(path,i));
+        const fileBlob = await response.blob();
+        if(fileBlob.type==='image/jpeg'){
+          imageBlobUrlsArray.push(URL.createObjectURL(fileBlob));
+        }
+      }
+      catch(err){
+        imageBlobUrlsArray.push(null);
+      }
+    }
+    return new Promise((resolve)=>{
+      Promise.all(imageBlobUrlsArray).then(imageBlobUrls=>{
+        resolve(imageBlobUrls.filter(Boolean))
+      })
+    })
+  }
   
+  export const createImage = (url:any) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        resolve(img);
+      };
+      img.onerror = () => {
+        resolve(null);
+      };
+      img.src = url;
+    });
+  };
 
   
   export {coverImg,currentFrame,preloadImages}
