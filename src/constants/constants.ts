@@ -20,6 +20,7 @@ export const DRAGONBALL = "dragonball";
 export const BOKUNOHERO = "bokunohero";
 export const DEMONSLAYER = "demonslayer";
 export const ONEPUNCHMAN = "onepunchman";
+export const ATTACKONTITAN = "attackontitan";
 
 export enum STATUS {
   IDLE = "idle",
@@ -48,6 +49,11 @@ export const animes: AnimeHome[] = [
     title: "One Punch Man",
     path: ONEPUNCHMAN,
     thumbnailUrl: `/${ONEPUNCHMAN}/thumbnail.jpg`,
+  },
+  {
+    title: "Attack On Titan",
+    path: ATTACKONTITAN,
+    thumbnailUrl: `/${ATTACKONTITAN}/thumbnail.jpg`,
   },
 ];
 
@@ -116,6 +122,16 @@ export const animeMap = {
         thumbnailUrl: `/${ONEPUNCHMAN}/saitama-vs-genos/0120.jpg`
       }
     ]
+  },
+  attackontitan:{
+    title:"Attack On Titan",
+    montages:[
+      {
+        path:`${ATTACKONTITAN}/levi-vs-beast-titan`,
+        title:"Levi vs Beast Titan",
+        thumbnailUrl:`/${ATTACKONTITAN}/levi-vs-beast-titan/0349.jpg`
+      }
+    ]
   }
 } as any;
 
@@ -154,6 +170,10 @@ export const montageMap = {
   },
   "saitama-vs-genos":{
     path: `${ONEPUNCHMAN}/saitama-vs-genos`,
+    frames:500
+  },
+  "levi-vs-beast-titan":{
+    path : `${ATTACKONTITAN}/levi-vs-beast-titan`,
     frames:500
   }
 } as any;

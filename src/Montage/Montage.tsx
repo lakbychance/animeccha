@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   coverImg,
-  preloadImages,
   preloadImageBlobUrls,
   createImage,
 } from "./utility";
@@ -81,10 +80,6 @@ const Montage = () => {
       return;
     }
     const { path, frames } = montageMap[montage];
-    // preloadImages(path, 1, frames).then((images: any) => {
-    //   setStatus(STATUS.RESOLVED);
-    //   setImages([...images]);
-    // });
     preloadImageBlobUrls(path, 1, frames).then(async (imageBlobUrls: any) => {
       blobUrls.current = imageBlobUrls;
       const imagePromises = blobUrls.current.map(async (url: any) => {
