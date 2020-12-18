@@ -1,5 +1,3 @@
-import { resolve } from "dns";
-
 const coverImg = (context: any, img: HTMLImageElement, type: string) => {
   const imgRatio = img.height / img.width;
   const winRatio = window.innerHeight / window.innerWidth;
@@ -67,28 +65,25 @@ export const preloadImageBlobUrls = async (
 ) => {
   const imagePromises: any = [];
   for (let i = initial; i < frameCount; i++) {
-    try {
-      imagePromises.push(fetch(currentFrame(path, i)));
-    } catch (err) {
-      imagePromises.push(null);
-    }
+    imagePromises.push(fetch(currentFrame(path, i)));
   }
-  return new Promise((resolve)=>{
-    Promise.all(imagePromises.filter(Boolean)).then((imageResponses: any) => {
-      const imageBlobsUrls =  imageResponses.map(async (imageResponse: any) => {
-        const fileBlob = await imageResponse.blob();
-        if (fileBlob.type === "image/jpeg") {
-          return URL.createObjectURL(fileBlob);
-        }
-      });
+  return new Promise((resolve) => {
+    Promise.allSettled(imagePromises).then((imageResponses: any) => {
+      const imageBlobsUrls = imageResponses
+        .filter((imageResponse: any) => imageResponse.status === "fulfilled")
+        .map(async (imageResponse: any) => {
+          const fileBlob = await imageResponse.value.blob();
+          if (fileBlob.type === "image/jpeg") {
+            return URL.createObjectURL(fileBlob);
+          }
+        });
       resolve(Promise.all(imageBlobsUrls));
     });
-  })
-
+  });
 };
 
 export const createImage = (url: any) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const img = new Image();
     img.onload = () => {
       resolve(img);
