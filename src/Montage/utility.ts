@@ -63,20 +63,23 @@ export const preloadImageBlobUrls = async (
   initial: number,
   frameCount: number
 ) => {
-  const imagePromises: any = [];
+  const urls = [];
   for (let i = initial; i < frameCount; i++) {
-    imagePromises.push(fetch(currentFrame(path, i)));
+    urls.push(currentFrame(path, i));
   }
-  const imageResponses: any = await Promise.allSettled(imagePromises);
-  const imageBlobsUrls = imageResponses
-    .filter((imageResponse: any) => imageResponse.status === "fulfilled")
-    .map(async (imageResponse: any) => {
-      const fileBlob = await imageResponse.value.blob();
-      if (fileBlob.type === "image/jpeg") {
-        return URL.createObjectURL(fileBlob);
+  const imageBlobsUrls = await Promise.all(
+    urls.map(async (url: string) => {
+      try {
+        const response = await fetch(url);
+        const fileBlob = await response.blob();
+        if (fileBlob.type === "image/jpeg")
+          return URL.createObjectURL(fileBlob);
+      } catch (e) {
+        return null;
       }
-    });
-  return Promise.all(imageBlobsUrls);
+    })
+  );
+  return imageBlobsUrls;
 };
 
 export const createImage = (url: any) => {
