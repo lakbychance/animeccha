@@ -58,7 +58,7 @@ const preloadImages = (path: string, initial: number, frameCount: number) => {
   });
 };
 
-export const preloadImageBlobUrls = (
+export const preloadImageBlobUrls = async (
   path: string,
   initial: number,
   frameCount: number
@@ -67,19 +67,16 @@ export const preloadImageBlobUrls = (
   for (let i = initial; i < frameCount; i++) {
     imagePromises.push(fetch(currentFrame(path, i)));
   }
-  return new Promise((resolve) => {
-    Promise.allSettled(imagePromises).then((imageResponses: any) => {
-      const imageBlobsUrls = imageResponses
-        .filter((imageResponse: any) => imageResponse.status === "fulfilled")
-        .map(async (imageResponse: any) => {
-          const fileBlob = await imageResponse.value.blob();
-          if (fileBlob.type === "image/jpeg") {
-            return URL.createObjectURL(fileBlob);
-          }
-        });
-      resolve(Promise.all(imageBlobsUrls));
+  const imageResponses: any = await Promise.allSettled(imagePromises);
+  const imageBlobsUrls = imageResponses
+    .filter((imageResponse: any) => imageResponse.status === "fulfilled")
+    .map(async (imageResponse: any) => {
+      const fileBlob = await imageResponse.value.blob();
+      if (fileBlob.type === "image/jpeg") {
+        return URL.createObjectURL(fileBlob);
+      }
     });
-  });
+  return Promise.all(imageBlobsUrls);
 };
 
 export const createImage = (url: any) => {
