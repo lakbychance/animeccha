@@ -19,8 +19,8 @@ const Montage = () => {
   const { montage } = useParams<any>();
   const history = useHistory();
   const [status, setStatus] = useState(STATUS.PENDING);
-  const [images, setImages] = useState<any>([]);
   const [canScroll, setCanScroll] = useState(false);
+  const images = useRef<any>([]);
   const blobUrls = useRef<any>([]);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -40,7 +40,7 @@ const Montage = () => {
         if (canScroll) {
           setCanScroll(false);
         }
-        const img = images[index];
+        const img = images.current[index];
         if (img) {
           coverImg(context, img, "contain");
         }
@@ -85,7 +85,7 @@ const Montage = () => {
         }
       });
       const imageElements = await Promise.all(imagePromises);
-      setImages(imageElements.filter(Boolean));
+      images.current = imageElements.filter(Boolean);
       setStatus(STATUS.RESOLVED);
     }
     getImageElements();
@@ -111,8 +111,8 @@ const Montage = () => {
     }
   }, [status]);
 
-  const isLoading = status === STATUS.PENDING && !images.length;
-  const isIdle = status === STATUS.IDLE && !images.length;
+  const isLoading = status === STATUS.PENDING && !images.current.length;
+  const isIdle = status === STATUS.IDLE && !images.current.length;
   const { frames } = montageMap[montage];
   return (
     <>
