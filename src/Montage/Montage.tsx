@@ -1,9 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  coverImg,
-  preloadImageBlobUrls,
-  createImage,
-} from "./utility";
+import { coverImg, preloadImageBlobUrls, createImage } from "./utility";
 import { montageMap, STATUS } from "../constants/constants";
 import styles from "./Montage.module.css";
 import { useHistory, useParams } from "react-router-dom";
@@ -25,7 +21,7 @@ const Montage = () => {
   const [status, setStatus] = useState(STATUS.PENDING);
   const [images, setImages] = useState<any>([]);
   const [canScroll, setCanScroll] = useState(false);
-  const blobUrls = useRef([]);
+  const blobUrls = useRef<any>([]);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -80,7 +76,8 @@ const Montage = () => {
       return;
     }
     const { path, frames } = montageMap[montage];
-    preloadImageBlobUrls(path, 1, frames).then(async (imageBlobUrls: any) => {
+    async function getImageElements() {
+      const imageBlobUrls = await preloadImageBlobUrls(path, 1, frames);
       blobUrls.current = imageBlobUrls;
       const imagePromises = blobUrls.current.map(async (url: any) => {
         if (url) {
@@ -90,7 +87,8 @@ const Montage = () => {
       const imageElements = await Promise.all(imagePromises);
       setImages(imageElements.filter(Boolean));
       setStatus(STATUS.RESOLVED);
-    });
+    }
+    getImageElements();
     return () => {
       blobUrls.current.forEach((imageBlobUrl: any) => {
         if (imageBlobUrl) {

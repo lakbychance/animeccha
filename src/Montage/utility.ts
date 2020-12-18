@@ -58,7 +58,7 @@ const preloadImages = (path: string, initial: number, frameCount: number) => {
   });
 };
 
-export const preloadImageBlobUrls = async (
+export const preloadImageBlobUrls = (
   path: string,
   initial: number,
   frameCount: number
