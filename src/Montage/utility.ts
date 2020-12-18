@@ -58,25 +58,49 @@ const preloadImages = (path: string, initial: number, frameCount: number) => {
   });
 };
 
+// export const preloadImageBlobUrls = async (
+//   path: string,
+//   initial: number,
+//   frameCount: number
+// ) => {
+//   const imagePromises: any = [];
+//   for (let i = initial; i < frameCount; i++) {
+//     imagePromises.push(fetch(currentFrame(path, i)));
+//   }
+//   const imageResponses: any = await Promise.allSettled(imagePromises);
+//   const imageBlobsUrls = imageResponses
+//     .filter((imageResponse: any) => imageResponse.status === "fulfilled")
+//     .map(async (imageResponse: any) => {
+//       const fileBlob = await imageResponse.value.blob();
+//       if (fileBlob.type === "image/jpeg") {
+//         return URL.createObjectURL(fileBlob);
+//       }
+//     });
+//   return Promise.all(imageBlobsUrls);
+// };
+
 export const preloadImageBlobUrls = async (
   path: string,
   initial: number,
   frameCount: number
 ) => {
-  const imagePromises: any = [];
-  for (let i = initial; i < frameCount; i++) {
-    imagePromises.push(fetch(currentFrame(path, i)));
+  const urls:any = [];
+  for(let i = initial;i<frameCount;i++){
+    urls.push(currentFrame(path,i));
   }
-  const imageResponses: any = await Promise.allSettled(imagePromises);
-  const imageBlobsUrls = imageResponses
-    .filter((imageResponse: any) => imageResponse.status === "fulfilled")
-    .map(async (imageResponse: any) => {
-      const fileBlob = await imageResponse.value.blob();
-      if (fileBlob.type === "image/jpeg") {
-        return URL.createObjectURL(fileBlob);
+  const images = await Promise.all(
+    urls.map(async (url:any) => {
+      try {
+        const response = await fetch(url);
+        const fileBlob = await response.blob();
+        if (fileBlob.type === "image/jpeg")
+          return URL.createObjectURL(fileBlob);
+      } catch (e) {
+        return null;
       }
-    });
-  return Promise.all(imageBlobsUrls);
+    })
+  );
+  return images;
 };
 
 export const createImage = (url: any) => {
