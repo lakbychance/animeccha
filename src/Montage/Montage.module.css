@@ -6,27 +6,6 @@
   max-width: 100vw;
   max-height: 100vh;
 }
-.loader {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-.ball {
-  background:var(--color-primary-text);
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-}
-.ballContainer{
-  display: flex;
-  justify-content: space-around;
-  width:150px;
-}
-.loadingText{
-  color:var(--color-primary-text);
-  font-size: 20px;
-}
 .montage {
   align-items: center;
   background: black;

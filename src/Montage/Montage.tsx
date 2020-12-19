@@ -5,16 +5,8 @@ import styles from "./Montage.module.css";
 import { useHistory, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import scrollIndicator from "../assets/scrollIndicator.svg";
-const montageVariants = {
-  initial: {},
-  final: {
-    scale: [0.5, 0.8],
-    transition: {
-      yoyo: Infinity,
-      duration: 0.5,
-    },
-  },
-};
+import {Loader}  from "../components";
+
 const Montage = () => {
   const { montage } = useParams<any>();
   const history = useHistory();
@@ -137,33 +129,7 @@ const Montage = () => {
           ></motion.img>
         )}
         {isLoading && (
-          <div className={styles.loader}>
-            <motion.div
-              className={styles.ballContainer}
-              animate={{ y: [-20, 0] }}
-              transition={{ yoyo: Infinity }}
-            >
-              {Array(3)
-                .fill("*")
-                .map(() => {
-                  return (
-                    <motion.div
-                      className={styles.ball}
-                      variants={montageVariants}
-                      initial="initial"
-                      animate="final"
-                    ></motion.div>
-                  );
-                })}
-            </motion.div>
-            <motion.span
-              className={styles.loadingText}
-              animate={{ x: [-10, 10] }}
-              transition={{ yoyo: Infinity }}
-            >
-              Yo anime lover, loading your montage...
-            </motion.span>
-          </div>
+         <Loader/>
         )}
         {isIdle && (
           <motion.div

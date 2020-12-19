@@ -1,0 +1,21 @@
+.ball {
+  background: var(--color-primary-text);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+.ballContainer {
+  display: flex;
+  justify-content: space-around;
+  width: 150px;
+}
+.loader {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.loadingText {
+  color: var(--color-primary-text);
+  font-size: 20px;
+}
