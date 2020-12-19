@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Route,
   Redirect,
@@ -7,8 +7,9 @@ import {
   useHistory,
 } from "react-router-dom";
 import "./App.css";
-import { Anime, Montage } from "./components";
-import Home from "./Home/Home";
+import { Anime } from "./containers";
+import { Montage } from "./components";
+import Home from "./containers/Home/Home";
 
 import backBtn from "./assets/backBtn.svg";
 
@@ -25,13 +26,12 @@ function App() {
           onClick={() => history.goBack()}
         ></img>
       )}
-        <Switch>
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/anime/:anime" component={Anime} />
-          <Route exact path="/anime/:anime/:montage" component={Montage} />
-          <Redirect path="/" to="/home">
-          </Redirect>
-        </Switch>
+      <Switch>
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/anime/:anime" component={Anime} />
+        <Route exact path="/anime/:anime/:montage" component={Montage} />
+        <Redirect path="/" to="/home"></Redirect>
+      </Switch>
     </div>
   );
 }

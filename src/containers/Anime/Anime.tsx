@@ -1,8 +1,12 @@
 import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { AnimeCard, Layout } from "../components";
-import { animeMap, AnimePathParameters, IAnimeCard } from "../config/constants";
+import { AnimeCard, Layout } from "../../components";
+import {
+  animeMap,
+  AnimePathParameters,
+  IAnimeCard,
+} from "../../config/constants";
 import styles from "./Anime.module.css";
 
 const Anime = () => {

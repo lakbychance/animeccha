@@ -1,8 +1,8 @@
 import React, { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { AnimeCard, Layout } from "../components";
-import { IAnimeCard, animes } from "../config/constants";
+import { AnimeCard, Layout } from "../../components";
+import { IAnimeCard, animes } from "../../config/constants";
 import styles from "./Home.module.css";
 
 const layoutStyles: CSSProperties = { marginTop: "10px", width: "80%" };

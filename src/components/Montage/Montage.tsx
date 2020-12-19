@@ -2,9 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { coverImg, preloadImageBlobUrls, createImage } from "./utility";
-import { Loader } from "../components";
-import { montageMap, MontagePathParameters, STATUS } from "../config/constants";
-import scrollIndicator from "../assets/scrollIndicator.svg";
+import { Loader } from "../../components";
+import {
+  montageMap,
+  MontagePathParameters,
+  STATUS,
+} from "../../config/constants";
+import scrollIndicator from "../../assets/scrollIndicator.svg";
 import styles from "./Montage.module.css";
 
 const Montage = () => {

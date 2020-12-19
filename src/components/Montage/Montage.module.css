@@ -14,29 +14,28 @@
   height: 500vh;
   width: 100vw;
 }
-.refreshHint{
+.refreshHint {
   align-items: center;
   backdrop-filter: blur(20px);
   color: var(--color-primary-text);
-  display: flex;   
+  display: flex;
   height: 100%;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   z-index: 1000;
 }
-.refreshHint>button{
-  background:var(--color-primary-text);
-  border:none;
+.refreshHint > button {
+  background: var(--color-primary-text);
+  border: none;
   border-radius: 5px;
-  height:30px;
+  height: 30px;
   margin-top: 5px;
 }
-.scrollIndicator{
-  top:30px;
+.scrollIndicator {
+  top: 30px;
   filter: invert(1);
   position: fixed;
   height: 50px;
-  width:50px;
-  background:url('../assets/scrollIndicator.svg')
+  width: 50px;
 }
