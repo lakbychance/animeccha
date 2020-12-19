@@ -21,9 +21,10 @@ const Loader = () => {
       >
         {Array(3)
           .fill("*")
-          .map(() => {
+          .map((_val,index) => {
             return (
               <motion.div
+                key={index}
                 className={styles.ball}
                 variants={loaderVariants}
                 initial="initial"

@@ -1,29 +1,12 @@
-.anime{
-display: flex;
-flex-direction: column;
-align-items: center;
-height: 100vh;
-width: 80vw;
-overflow: auto;
+.anime {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 80vw;
+  overflow: auto;
 }
-.animeTitle{
-    color: var(--color-primary-text);
-    font-size: 2.5rem;
-}
-.animeMontages{
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 10px;
-}
-
-.animeMontages>div{
- margin-top: 10px;
-}
-
-@media only screen and (max-width:600px){
-    .animeMontages{
-    display: flex;
-    flex-direction: column;
-    align-items:  center;
-    }
+.animeTitle {
+  color: var(--color-primary-text);
+  font-size: 2.5rem;
 }

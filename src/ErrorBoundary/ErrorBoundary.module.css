@@ -1,13 +1,13 @@
-.alert{
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+.alert {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
-.alertTitle{
-    font-size: 40px;
+.alertTitle {
+  font-size: 40px;
 }
-.errorMessage{
-    font-size: 16px;
-    white-space: normal;
+.errorMessage {
+  font-size: 16px;
+  white-space: normal;
 }

@@ -1,10 +1,12 @@
-import { motion } from "framer-motion";
 import React, { CSSProperties } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { AnimeCard, Layout } from "../components";
-import { AnimeHome, animes } from "../constants/constants";
+import { IAnimeCard, animes } from "../config/constants";
 import styles from "./Home.module.css";
+
 const layoutStyles: CSSProperties = { marginTop: "10px", width: "80%" };
+
 const Home = () => {
   return (
     <>
@@ -17,14 +19,12 @@ const Home = () => {
           Animeccha
         </motion.span>
         <Layout layoutStyles={layoutStyles}>
-          {animes.map((anime: AnimeHome) => {
-            const { title, thumbnailUrl, path } = anime;
+          {animes.map((anime: IAnimeCard) => {
+            const { path, title, thumbnailUrl } = anime;
             return (
-              <div key={title}>
-                <Link to={`/anime/${path}`}>
-                  <AnimeCard title={title} thumbnailUrl={thumbnailUrl} />
-                </Link>
-              </div>
+              <Link key={title} to={`/anime/${path}`}>
+                <AnimeCard title={title} thumbnailUrl={thumbnailUrl} />
+              </Link>
             );
           })}
         </Layout>

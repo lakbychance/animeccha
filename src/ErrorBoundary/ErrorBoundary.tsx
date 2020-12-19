@@ -1,6 +1,6 @@
 import React from "react";
 import { ErrorBoundary as EB } from "react-error-boundary";
-import styles from './ErrorBoundary.module.css'
+import styles from "./ErrorBoundary.module.css";
 const ErrorFallback = ({ error }: any) => {
   return (
     <>
@@ -11,7 +11,7 @@ const ErrorFallback = ({ error }: any) => {
     </>
   );
 };
-const ErrorBoundary = ({ children }: any) => {
+const ErrorBoundary: React.FC = ({ children }) => {
   return <EB FallbackComponent={ErrorFallback}>{children}</EB>;
 };
 export default ErrorBoundary;

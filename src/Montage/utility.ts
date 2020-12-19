@@ -36,7 +36,7 @@ const currentFrame = (path: string, index: number) =>
   )}`;
 
 const preloadImages = (path: string, initial: number, frameCount: number) => {
-  const imagePromisesArray: any = [];
+  const imagePromisesArray: Promise<HTMLImageElement>[] = [];
   for (let i = initial; i < frameCount; i++) {
     imagePromisesArray.push(
       new Promise((resolve, reject) => {
@@ -82,7 +82,7 @@ export const preloadImageBlobUrls = async (
   return imageBlobsUrls;
 };
 
-export const createImage = (url: any) => {
+export const createImage = (url: string) => {
   return new Promise((resolve) => {
     const img = new Image();
     img.onload = () => {

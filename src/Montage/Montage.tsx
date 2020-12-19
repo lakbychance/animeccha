@@ -1,19 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
-import { coverImg, preloadImageBlobUrls, createImage } from "./utility";
-import { montageMap, STATUS } from "../constants/constants";
-import styles from "./Montage.module.css";
 import { useHistory, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { coverImg, preloadImageBlobUrls, createImage } from "./utility";
+import { Loader } from "../components";
+import { montageMap, MontagePathParameters, STATUS } from "../config/constants";
 import scrollIndicator from "../assets/scrollIndicator.svg";
-import {Loader}  from "../components";
+import styles from "./Montage.module.css";
 
 const Montage = () => {
-  const { montage } = useParams<any>();
+  const { montage } = useParams<MontagePathParameters>();
   const history = useHistory();
   const [status, setStatus] = useState(STATUS.PENDING);
   const [canScroll, setCanScroll] = useState(false);
-  const images = useRef<any>([]);
-  const blobUrls = useRef<any>([]);
+  const images = useRef<HTMLImageElement[]>([]);
+  const blobUrls = useRef<string[]>([]);
+  const isMounted = useRef(true);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -69,20 +70,21 @@ const Montage = () => {
     }
     const { path, frames } = montageMap[montage];
     async function getImageElements() {
-      const imageBlobUrls = await preloadImageBlobUrls(path, 1, frames);
+      const imageBlobUrls: any = await preloadImageBlobUrls(path, 1, frames);
       blobUrls.current = imageBlobUrls;
-      const imagePromises = blobUrls.current.map(async (url: any) => {
+      const imagePromises = blobUrls.current.map(async (url: string) => {
         if (url) {
           return await createImage(url);
         }
       });
-      const imageElements = await Promise.all(imagePromises);
+      const imageElements: any = await Promise.all(imagePromises);
       images.current = imageElements.filter(Boolean);
-      setStatus(STATUS.RESOLVED);
+      if (isMounted.current) setStatus(STATUS.RESOLVED);
     }
     getImageElements();
     return () => {
-      blobUrls.current.forEach((imageBlobUrl: any) => {
+      isMounted.current = false;
+      blobUrls.current.forEach((imageBlobUrl: string) => {
         if (imageBlobUrl) {
           URL.revokeObjectURL(imageBlobUrl);
         }
@@ -128,9 +130,7 @@ const Montage = () => {
             }}
           ></motion.img>
         )}
-        {isLoading && (
-         <Loader/>
-        )}
+        {isLoading && <Loader />}
         {isIdle && (
           <motion.div
             className={styles.refreshHint}

@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { AnimeCard, Layout } from "../components";
-import { animeMap } from "../constants/constants";
+import { animeMap, AnimePathParameters, IAnimeCard } from "../config/constants";
 import styles from "./Anime.module.css";
 
 const Anime = () => {
-  const { anime } = useParams<any>();
+  const { anime } = useParams<AnimePathParameters>();
   const history = useHistory();
 
   useEffect(() => {
@@ -14,13 +14,10 @@ const Anime = () => {
       history.push("/home");
       return;
     }
-  }, [anime,history]);
+  }, [anime, history]);
   const animeDetail = animeMap[anime];
   return (
-    <motion.div
-      className={styles.anime}
-      transition={{ duration: 0.5 }}
-    >
+    <motion.div className={styles.anime} transition={{ duration: 0.5 }}>
       {animeDetail && (
         <>
           <motion.span
@@ -31,14 +28,12 @@ const Anime = () => {
             {animeDetail.title}
           </motion.span>
           <Layout>
-            {animeDetail.montages.map((montage: any) => {
-              const { title, thumbnailUrl } = montage;
+            {animeDetail.montages.map((montage: IAnimeCard) => {
+              const { path, title, thumbnailUrl } = montage;
               return (
-                <div className={styles.montage} key={title}>
-                  <Link to={montage.path}>
-                    <AnimeCard title={title} thumbnailUrl={thumbnailUrl} />
-                  </Link>
-                </div>
+                <Link key={title} to={path}>
+                  <AnimeCard title={title} thumbnailUrl={thumbnailUrl} />
+                </Link>
               );
             })}
           </Layout>

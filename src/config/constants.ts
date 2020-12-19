@@ -1,19 +1,39 @@
+export interface AnimePathParameters {
+  anime: string;
+}
+
+export interface IAnimeCard {
+  title: string;
+  path: string;
+  thumbnailUrl: string;
+}
+
+interface IAnimeMap {
+  [key: string]: IAnimeMapContent;
+}
+
+export interface IAnimeMapContent {
+  title: string;
+  montages: IAnimeCard[];
+}
+
+interface IMontageMap {
+  [key: string]: IMontageMapContent;
+}
+
+export interface IMontageMapContent {
+  path: string;
+  frames: number;
+}
+
 export interface MontageProps {
   title: string;
   frames: number;
   path: string;
 }
 
-export interface AnimeProps {
-  name: string;
-  thumbnailUrl?: string;
-  montages: MontageProps[];
-}
-
-export interface AnimeHome {
-  title: string;
-  path: string;
-  thumbnailUrl?: string;
+export interface MontagePathParameters {
+  montage: string;
 }
 
 export const DRAGONBALL = "dragonball";
@@ -29,7 +49,7 @@ export enum STATUS {
   REJECTED = "rejected",
 }
 
-export const animes: AnimeHome[] = [
+export const animes: IAnimeCard[] = [
   {
     title: "Dragon Ball",
     path: DRAGONBALL,
@@ -57,7 +77,7 @@ export const animes: AnimeHome[] = [
   },
 ];
 
-export const animeMap = {
+export const animeMap: IAnimeMap = {
   dragonball: {
     title: "Dragon Ball",
     montages: [
@@ -76,7 +96,7 @@ export const animeMap = {
         title: "Goku vs Kefla - Kamehameha",
         thumbnailUrl: `/${DRAGONBALL}/goku-kamehameha-kefla/0004.jpg`,
       },
-    ] as AnimeHome[],
+    ],
   },
   bokunohero: {
     title: "Boku No Hero",
@@ -113,29 +133,29 @@ export const animeMap = {
       },
     ],
   },
-  onepunchman:{
-    title:"One Punch Man",
-    montages:[
+  onepunchman: {
+    title: "One Punch Man",
+    montages: [
       {
-        path:`${ONEPUNCHMAN}/saitama-vs-genos`,
-        title:"Saitama vs Genos",
-        thumbnailUrl: `/${ONEPUNCHMAN}/saitama-vs-genos/0120.jpg`
-      }
-    ]
+        path: `${ONEPUNCHMAN}/saitama-vs-genos`,
+        title: "Saitama vs Genos",
+        thumbnailUrl: `/${ONEPUNCHMAN}/saitama-vs-genos/0120.jpg`,
+      },
+    ],
   },
-  attackontitan:{
-    title:"Attack On Titan",
-    montages:[
+  attackontitan: {
+    title: "Attack On Titan",
+    montages: [
       {
-        path:`${ATTACKONTITAN}/levi-vs-beast-titan`,
-        title:"Levi vs Beast Titan",
-        thumbnailUrl:`/${ATTACKONTITAN}/levi-vs-beast-titan/0349.jpg`
-      }
-    ]
-  }
-} as any;
+        path: `${ATTACKONTITAN}/levi-vs-beast-titan`,
+        title: "Levi vs Beast Titan",
+        thumbnailUrl: `/${ATTACKONTITAN}/levi-vs-beast-titan/0349.jpg`,
+      },
+    ],
+  },
+};
 
-export const montageMap = {
+export const montageMap: IMontageMap = {
   "goku-turns-blue-broly": {
     path: `${DRAGONBALL}/goku-turns-blue-broly`,
     frames: 476,
@@ -160,20 +180,20 @@ export const montageMap = {
     path: `${BOKUNOHERO}/midoriya-vs-todoroki`,
     frames: 468,
   },
-  "tanjiro-vs-susamaru":{
+  "tanjiro-vs-susamaru": {
     path: `${DEMONSLAYER}/tanjiro-vs-susamaru`,
-    frames:334
+    frames: 334,
   },
-  "tanjiro-vs-rui":{
+  "tanjiro-vs-rui": {
     path: `${DEMONSLAYER}/tanjiro-vs-rui`,
-    frames:497
+    frames: 497,
   },
-  "saitama-vs-genos":{
+  "saitama-vs-genos": {
     path: `${ONEPUNCHMAN}/saitama-vs-genos`,
-    frames:500
+    frames: 500,
   },
-  "levi-vs-beast-titan":{
-    path : `${ATTACKONTITAN}/levi-vs-beast-titan`,
-    frames:500
-  }
-} as any;
+  "levi-vs-beast-titan": {
+    path: `${ATTACKONTITAN}/levi-vs-beast-titan`,
+    frames: 500,
+  },
+};

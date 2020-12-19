@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { IAnimeCard } from "../../config/constants";
 import styles from "./AnimeCard.module.css";
 
-const AnimeCard = ({ title, thumbnailUrl }: any) => {
+const AnimeCard = ({ title, thumbnailUrl }: Partial<IAnimeCard>) => {
   const [showImage, setShowImage] = useState(false);
 
   const animeCardVariant = {
