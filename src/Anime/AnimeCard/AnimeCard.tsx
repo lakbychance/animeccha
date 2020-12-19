@@ -38,8 +38,8 @@ const AnimeCard = ({ title, thumbnailUrl }: any) => {
         ) : (
           <div className={styles.placeHolderContainer}>
             <motion.div
-              animate={{ x: [-200, 200] }}
-              transition={{ yoyo: Infinity }}
+              animate={{ x: [-500,500]}}
+              transition={{ duration:'1',repeat:Infinity}}
               className={styles.shimmer}
             ></motion.div>
             <span>{title}</span>

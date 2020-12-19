@@ -5,17 +5,9 @@
     margin-top: 10px;
     width: 100%;
 }
-.layout>div{
-    height: 90%;
-}
-
 @media only screen and (max-width:700px){
     .layout{
         display: flex;
         flex-direction: column;
-    }
-    .layout > div{
-        height: 100%;
-        margin-top: 10px;
     }
 }

@@ -9,16 +9,13 @@
 }
 .animeTitle {
   font-size: 20px;
-  text-decoration: none;
 }
 .animeThumbnail {
+  background: #f6f7f8;
   border-radius: 10px;
   display: flex;
+  height: 100%;
   justify-content: center;
-  overflow: hidden;
-  min-width: 100%;
-  min-height: 150px;
-  background: #f6f7f8;
   width: 100%;
 }
 .imageContainer {
@@ -41,8 +38,10 @@
   text-align:center;
 }
 .shimmer {
-  position: absolute;
+  background-image: linear-gradient(#d8d2d2, #ffffff00);
+  border-radius: 10px;
   height: 100%;
-  width: 30%;
-  background: aliceblue;
+  position: absolute;
+  width: 100%;
 }
+
