@@ -1,16 +1,14 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { AnimeCard, Layout } from "../components";
 import { AnimeHome, animes } from "../constants/constants";
 import styles from "./Home.module.css";
+const layoutStyles: CSSProperties = { marginTop: "10px", width: "80%" };
 const Home = () => {
   return (
     <>
-      <motion.div
-        className={styles.home}
-        transition={{duration:0.5}}
-      >
+      <motion.div className={styles.home} transition={{ duration: 0.5 }}>
         <motion.span
           className={styles.homeHeading}
           initial={{ x: "-100vw" }}
@@ -18,7 +16,7 @@ const Home = () => {
         >
           Animeccha
         </motion.span>
-        <Layout layoutStyles={{width:"80%"}}>
+        <Layout layoutStyles={layoutStyles}>
           {animes.map((anime: AnimeHome) => {
             const { title, thumbnailUrl, path } = anime;
             return (
