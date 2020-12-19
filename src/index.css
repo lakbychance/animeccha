@@ -6,7 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+a{
+  text-decoration: none;
+}
 :root{
   --color-primary-bg:black;
   --color-primary-text:white;
