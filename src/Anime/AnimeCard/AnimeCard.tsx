@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import styles from "./AnimeCard.module.css";
 
 const AnimeCard = ({ title, thumbnailUrl }: any) => {
-  const [showImage, setShowImage] = useState(false);
+  const [image, setImage] = useState<HTMLImageElement>();
   useEffect(() => {
     const image = new Image();
     image.onload = () => {
-      setShowImage(true);
+      setImage(image);
     };
     image.src = thumbnailUrl;
   }, [thumbnailUrl]);
@@ -29,7 +29,7 @@ const AnimeCard = ({ title, thumbnailUrl }: any) => {
       className={styles.animeCard}
     >
       <div className={styles.animeThumbnail}>
-        {showImage ? (
+        {image ? (
           <img
             alt={title}
             className={styles.imageContainer}
