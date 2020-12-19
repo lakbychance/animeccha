@@ -4,7 +4,7 @@
     flex-direction: column;
     height: 100vh;
     overflow: auto;
-    width: 80vw;
+    width: 100%;
 }
 .homeHeading{
     color: var(--color-primary-text);

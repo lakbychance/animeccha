@@ -18,7 +18,7 @@ const Home = () => {
         >
           Animeccha
         </motion.span>
-        <Layout>
+        <Layout layoutStyles={{width:"80%"}}>
           {animes.map((anime: AnimeHome) => {
             const { title, thumbnailUrl, path } = anime;
             return (
