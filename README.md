@@ -6,4 +6,5 @@ A project aiming to include my favorite montages across different animes such th
 yarn install
 
 # Running
-yarn start
+- Perform `node server.js` to run the static images server.
+- Perform `yarn start` to run the frontend.
