@@ -101,7 +101,7 @@ const Montage = () => {
     if (isLoading) {
       setTimeout(() => {
         setStatus(STATUS.IDLE);
-      }, 30000);
+      }, 60000);
     }
     const isLoaded = status === STATUS.RESOLVED;
     if (isLoaded) {
