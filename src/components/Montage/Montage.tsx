@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { coverImg, preloadImageBlobUrls, createImage } from "./utility";
+import { coverImg, preloadImageBlobUrls, createImage } from "./Montage.utility";
 import { Loader } from "../../components";
 import {
   montageMap,
