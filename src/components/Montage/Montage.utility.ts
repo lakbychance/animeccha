@@ -29,8 +29,13 @@ const coverImg = (context: any, img: HTMLImageElement, type: string) => {
   }
 };
 
+const imagePath =
+  process.env.NODE_ENV === "production"
+    ? "https://animeccha.nyc3.digitaloceanspaces.com"
+    : "";
+
 const currentFrame = (path: string, index: number) =>
-  `/${path}/${index.toString().padStart(4, "0")}.jpg`;
+  `${imagePath}/${path}/${index.toString().padStart(4, "0")}.jpg`;
 
 const preloadImages = (path: string, initial: number, frameCount: number) => {
   const imagePromisesArray: Promise<HTMLImageElement>[] = [];
