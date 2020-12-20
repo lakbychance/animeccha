@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { IAnimeCard } from "../../config/constants";
+import { IAnimeCard, imagePath } from "../../config/constants";
 import styles from "./AnimeCard.module.css";
 
 const AnimeCard = ({ title, thumbnailUrl }: Partial<IAnimeCard>) => {
@@ -29,7 +29,7 @@ const AnimeCard = ({ title, thumbnailUrl }: Partial<IAnimeCard>) => {
           className={`${styles.imageContainer} ${
             showImage ? styles.visible : styles.hidden
           }`}
-          src={thumbnailUrl}
+          src={`${imagePath}${thumbnailUrl}`}
           onLoad={() => setShowImage(true)}
         ></img>
 

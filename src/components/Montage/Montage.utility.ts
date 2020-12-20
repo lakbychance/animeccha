@@ -1,3 +1,5 @@
+import { imagePath } from "../../config/constants";
+
 const coverImg = (context: any, img: HTMLImageElement, type: string) => {
   const imgRatio = img.height / img.width;
   const winRatio = window.innerHeight / window.innerWidth;
@@ -28,11 +30,6 @@ const coverImg = (context: any, img: HTMLImageElement, type: string) => {
     );
   }
 };
-
-const imagePath =
-  process.env.NODE_ENV === "production"
-    ? "https://animeccha.nyc3.digitaloceanspaces.com"
-    : "";
 
 const currentFrame = (path: string, index: number) =>
   `${imagePath}/${path}/${index.toString().padStart(4, "0")}.jpg`;
