@@ -201,4 +201,9 @@ export const montageMap: IMontageMap = {
 export const imagePath =
   process.env.NODE_ENV === "production"
     ? "https://animeccha.nyc3.digitaloceanspaces.com"
-    : "http://localhost:8000";
+    : "http://localhost:8000/anime";
+
+export const assetPath =
+  process.env.NODE_ENV === "production"
+    ? "https://animeccha.nyc3.digitaloceanspaces.com/assets"
+    : "http://localhost:8000/assets";

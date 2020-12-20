@@ -10,8 +10,7 @@ import "./App.css";
 import { Anime } from "./containers";
 import { Montage } from "./components";
 import Home from "./containers/Home/Home";
-
-import backBtn from "./assets/backBtn.svg";
+import { assetPath } from "./config/constants";
 
 function App() {
   const location = useLocation();
@@ -22,7 +21,7 @@ function App() {
         <img
           alt="Back Button"
           className="backBtn"
-          src={backBtn}
+          src={`${assetPath}/backBtn.svg`}
           onClick={() => history.goBack()}
         ></img>
       )}

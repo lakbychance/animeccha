@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { coverImg, preloadImageBlobUrls, createImage } from "./Montage.utility";
 import { Loader } from "../../components";
 import {
+  assetPath,
   montageMap,
   MontagePathParameters,
   STATUS,
 } from "../../config/constants";
-import scrollIndicator from "../../assets/scrollIndicator.svg";
 import styles from "./Montage.module.css";
 
 const Montage = () => {
@@ -124,7 +124,7 @@ const Montage = () => {
       >
         {canScroll && (
           <motion.img
-            src={scrollIndicator}
+            src={`${assetPath}/scrollIndicator.svg`}
             className={styles.scrollIndicator}
             animate={{
               y: [-10, 10],
