@@ -41,6 +41,7 @@ export const BOKUNOHERO = "bokunohero";
 export const DEMONSLAYER = "demonslayer";
 export const ONEPUNCHMAN = "onepunchman";
 export const ATTACKONTITAN = "attackontitan";
+export const BUNGOSTRAYDOGS = "bungostraydogs";
 
 export enum STATUS {
   IDLE = "idle",
@@ -74,6 +75,11 @@ export const animes: IAnimeCard[] = [
     title: "Attack On Titan",
     path: ATTACKONTITAN,
     thumbnailUrl: `/${ATTACKONTITAN}/thumbnail.jpg`,
+  },
+  {
+    title: "Bungo Stray Dogs",
+    path: BUNGOSTRAYDOGS,
+    thumbnailUrl: `/${BUNGOSTRAYDOGS}/thumbnail.jpg`,
   },
 ];
 
@@ -153,6 +159,16 @@ export const animeMap: IAnimeMap = {
       },
     ],
   },
+  bungostraydogs: {
+    title: "Bungo Stray Dogs",
+    montages: [
+      {
+        path: `${BUNGOSTRAYDOGS}/atsushi-vs-fitzgerald`,
+        title: "Atsushi vs Fitzgerald",
+        thumbnailUrl: `/${BUNGOSTRAYDOGS}/atsushi-vs-fitzgerald/0206.jpg`,
+      },
+    ],
+  },
 };
 
 export const montageMap: IMontageMap = {
@@ -194,6 +210,10 @@ export const montageMap: IMontageMap = {
   },
   "levi-vs-beast-titan": {
     path: `${ATTACKONTITAN}/levi-vs-beast-titan`,
+    frames: 500,
+  },
+  "atsushi-vs-fitzgerald": {
+    path: `${BUNGOSTRAYDOGS}/atsushi-vs-fitzgerald`,
     frames: 500,
   },
 };
