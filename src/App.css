@@ -1,18 +1,17 @@
-.appContainer{
-    background:var(--color-primary-bg);
-    display: flex;
-    justify-content: center;
-    width:100vw;
+.appContainer {
+  background: var(--color-primary-bg);
+  display: flex;
+  justify-content: center;
+  width: 100vw;
 }
-.backBtn{
-    height: 40px;
-    position: fixed;
-    left: 20px;
-    cursor: pointer;
-    border-radius: 50%;
-    filter: invert(1);
-    top: 10px;
-    background: white;
-    z-index: 1000;
-    width: 40px;
+.backBtn {
+  height: 35px;
+  position: fixed;
+  left: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  filter: invert(1) contrast(0.5);
+  top: 10px;
+  z-index: 1000;
+  width: 40px;
 }

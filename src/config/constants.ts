@@ -100,7 +100,7 @@ export const animeMap: IAnimeMap = {
       },
       {
         path: `${DRAGONBALL}/goku-turns-super-saiyan`,
-        title: "Goku Turns Super Saiyan for the first time",
+        title: "Goku Turns Super Saiyan",
         thumbnailUrl: `/${DRAGONBALL}/goku-turns-super-saiyan/0004.jpg`,
       },
       {

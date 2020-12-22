@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React, { useEffect } from "react";
+import React, { CSSProperties, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { AnimeCard, Layout } from "../../components";
 import {
@@ -8,6 +8,8 @@ import {
   IAnimeCard,
 } from "../../config/constants";
 import styles from "./Anime.module.css";
+
+const layoutStyles: CSSProperties = { marginTop: "10px", width: "80%" };
 
 const Anime = () => {
   const { anime } = useParams<AnimePathParameters>();
@@ -31,7 +33,7 @@ const Anime = () => {
           >
             {animeDetail.title}
           </motion.span>
-          <Layout>
+          <Layout layoutStyles={layoutStyles}>
             {animeDetail.montages.map((montage: IAnimeCard) => {
               const { path, title, thumbnailUrl } = montage;
               return (

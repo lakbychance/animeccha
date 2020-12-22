@@ -32,7 +32,7 @@ const AnimeCard = ({ title, thumbnailUrl }: Partial<IAnimeCard>) => {
           src={`${imagePath}${thumbnailUrl}`}
           onLoad={() => setShowImage(true)}
         ></img>
-
+        {showImage && <span className={styles.animeCardTitle}>{title}</span>}
         {!showImage && (
           <div className={`${styles.placeHolderContainer} ${styles.animate}`}>
             <span>{title}</span>
