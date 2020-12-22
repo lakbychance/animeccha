@@ -5,6 +5,7 @@
 }
 .animeCard {
   align-items: center;
+  background: var(--color-secondary-bg);
   display: flex;
   overflow: hidden;
   border: 1px solid var(--color-primary-border);
@@ -15,6 +16,8 @@
 }
 .animeCardTitle {
   color: var(--color-primary-text);
+  font-size: 18px;
+  margin: auto;
   text-align: center;
   width: 100%;
 }
@@ -22,13 +25,13 @@
   font-size: 20px;
 }
 .animeThumbnail {
-  background: var(--color-secondary-bg);
+  align-items: center;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: space-evenly;
-  align-items: center;
+  margin-top: 8px;
   width: 100%;
 }
 .hidden {
