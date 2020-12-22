@@ -9,4 +9,5 @@
 .animeTitle {
   color: var(--color-primary-text);
   font-size: 2.5rem;
+  max-width: 200px;
 }
