@@ -42,6 +42,7 @@ export const DEMONSLAYER = "demonslayer";
 export const ONEPUNCHMAN = "onepunchman";
 export const ATTACKONTITAN = "attackontitan";
 export const BUNGOSTRAYDOGS = "bungostraydogs";
+export const HAIKYUU = "haikyuu";
 
 export enum STATUS {
   IDLE = "idle",
@@ -80,6 +81,11 @@ export const animes: IAnimeCard[] = [
     title: "Bungo Stray Dogs",
     path: BUNGOSTRAYDOGS,
     thumbnailUrl: `/${BUNGOSTRAYDOGS}/thumbnail.jpg`,
+  },
+  {
+    title: "Haikyuu!!",
+    path: HAIKYUU,
+    thumbnailUrl: `/${HAIKYUU}/thumbnail.jpg`,
   },
 ];
 
@@ -169,6 +175,16 @@ export const animeMap: IAnimeMap = {
       },
     ],
   },
+  haikyuu: {
+    title: "Haikyuu!!",
+    montages: [
+      {
+        path: `${HAIKYUU}/tsukishima-blocks-ushijima`,
+        title: "Tsukishima blocks Ushijima",
+        thumbnailUrl: `/${HAIKYUU}/tsukishima-blocks-ushijima/0356.jpg`,
+      },
+    ],
+  },
 };
 
 export const montageMap: IMontageMap = {
@@ -215,6 +231,10 @@ export const montageMap: IMontageMap = {
   "atsushi-vs-fitzgerald": {
     path: `${BUNGOSTRAYDOGS}/atsushi-vs-fitzgerald`,
     frames: 500,
+  },
+  "tsukishima-blocks-ushijima": {
+    path: `${HAIKYUU}/tsukishima-blocks-ushijima`,
+    frames: 405,
   },
 };
 
