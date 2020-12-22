@@ -15,7 +15,7 @@
   width: 100%;
 }
 .animeCardTitle {
-  color: var(--color-primary-text);
+  color: var(--color-secondary-text);
   font-size: 18px;
   margin: auto;
   text-align: center;

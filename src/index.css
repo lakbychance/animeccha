@@ -11,10 +11,10 @@ a {
 }
 :root {
   --color-primary-bg: #080808;
-  --color-primary-text: #d8d5d5;
+  --color-primary-text: #f1f1f1;
   --color-primary-border: #525252;
   --color-secondary-bg: #191919;
-  --color-secondary-text: ;
+  --color-secondary-text: #d8d5d5;
 }
 
 code {
