@@ -10,8 +10,23 @@
   left: 20px;
   cursor: pointer;
   border-radius: 50%;
-  filter: invert(1) contrast(0.5);
+  filter: contrast(0.5);
   top: 10px;
   z-index: 1000;
   width: 40px;
+}
+.backBtnDark {
+  filter: invert(1) contrast(0.5);
+}
+.colorModeDark {
+  filter: invert(1);
+  transform: rotate(180deg);
+  transition: ease-in 0.3s;
+}
+.colorModeToggle {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 18px;
+  transition: ease-in 0.3s;
 }

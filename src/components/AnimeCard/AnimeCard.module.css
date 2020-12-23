@@ -8,8 +8,8 @@
   background: var(--color-secondary-bg);
   display: flex;
   overflow: hidden;
-  border: 1px solid var(--color-primary-border);
   border-radius: 10px;
+  box-shadow: 0px 0px 2px 0px var(--color-primary-border);
   flex-direction: column;
   height: 100%;
   width: 100%;
@@ -17,6 +17,7 @@
 .animeCardTitle {
   color: var(--color-secondary-text);
   font-size: 18px;
+  font-weight: 600;
   margin: auto;
   text-align: center;
   width: 100%;

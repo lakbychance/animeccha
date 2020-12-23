@@ -1,13 +1,17 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useEffect } from "react";
+import clsx from "clsx";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { AnimeCard, Layout } from "../../components";
-import { IAnimeCard, animes } from "../../config/constants";
+import { IAnimeCard, animes, assetPath } from "../../config/constants";
+import { useLocalStorageState } from "../../hooks";
 import styles from "./Home.module.css";
 
 const layoutStyles: CSSProperties = { marginTop: "10px", width: "80%" };
 
 const Home = () => {
+  const [mode, setMode] = useLocalStorageState("mode", "dark");
+
   return (
     <>
       <motion.div className={styles.home} transition={{ duration: 0.5 }}>

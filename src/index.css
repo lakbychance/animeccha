@@ -9,7 +9,15 @@ body {
 a {
   text-decoration: none;
 }
-:root {
+
+[data-color-mode="light"] {
+  --color-primary-bg: #eef6ff;
+  --color-primary-text: #212121;
+  --color-primary-border: #98b2c9;
+  --color-secondary-bg: #b2c4db;
+  --color-secondary-text: #1a1a1a;
+}
+[data-color-mode="dark"] {
   --color-primary-bg: #080808;
   --color-primary-text: #f1f1f1;
   --color-primary-border: #525252;
