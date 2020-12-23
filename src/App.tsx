@@ -47,8 +47,8 @@ function App() {
             "colorModeToggle",
             mode === "dark" && "colorModeDark"
           )}
-          height="25px"
-          width="25px"
+          height="30px"
+          width="30px"
           onClick={toggleColorMode}
           src={`${assetPath}/yin-yang.svg`}
         ></img>

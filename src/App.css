@@ -26,7 +26,7 @@
 .colorModeToggle {
   cursor: pointer;
   position: absolute;
-  right: 10px;
-  top: 18px;
+  right: 5px;
+  top: 12px;
   transition: ease-in 0.3s;
 }
