@@ -2,6 +2,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  padding-bottom: 20px;
   width: 100%;
 }
 .homeHeading {

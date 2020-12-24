@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import { Anime } from "./containers";
-import { Montage } from "./components";
+import { Footer, Montage } from "./components";
 import Home from "./containers/Home/Home";
 import { assetPath } from "./config/constants";
 import { useLocalStorageState } from "./hooks";
@@ -59,6 +59,7 @@ function App() {
         <Route exact path="/anime/:anime/:montage" component={Montage} />
         <Redirect path="/" to="/home"></Redirect>
       </Switch>
+      <Footer />
     </div>
   );
 }

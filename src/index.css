@@ -11,6 +11,7 @@ a {
 }
 
 [data-color-mode="light"] {
+  --color-link-hover: #0039bd;
   --color-primary-bg: #eef6ff;
   --color-primary-text: #212121;
   --color-primary-border: #98b2c9;
@@ -18,6 +19,7 @@ a {
   --color-secondary-text: #1a1a1a;
 }
 [data-color-mode="dark"] {
+  --color-link-hover: #4183c4;
   --color-primary-bg: #080808;
   --color-primary-text: #f1f1f1;
   --color-primary-border: #525252;

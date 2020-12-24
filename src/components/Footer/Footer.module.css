@@ -1,0 +1,14 @@
+.attributeLink {
+  color: var(--color-primary-text);
+}
+.attributeLink:hover {
+  color: var(--color-link-hover);
+}
+.footer {
+  align-items: center;
+  background: var(--color-secondary-bg);
+  color: var(--color-primary-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
