@@ -4,6 +4,10 @@
 .attributeLink:hover {
   color: var(--color-link-hover);
 }
+.disclaimer {
+  font-size: 10px;
+  text-align: center;
+}
 .footer {
   align-items: center;
   background: var(--color-secondary-bg);

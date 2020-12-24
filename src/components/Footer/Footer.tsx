@@ -13,7 +13,11 @@ const Footer = () => {
       >
         <p>Icons by Flaticon - www.flaticon.com</p>
       </a>
-      <div role="list"></div>
+      <p className={styles.disclaimer}>
+        * All the images used for respective anime montages is the hardwork of
+        several animators. There is no scope of commercializing this without the
+        relevant authority's approval.
+      </p>
     </footer>
   );
 };
