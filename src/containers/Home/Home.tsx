@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { AnimeCard, Layout } from "../../components";
 import { IAnimeCard, animes, assetPath } from "../../config/constants";
 import { useLocalStorageState } from "../../hooks";
+import lightIcon from "../../assets/icons/animeccha-light.svg";
+import darkIcon from "../../assets/icons/animeccha-dark.svg";
 import styles from "./Home.module.css";
 
 const layoutStyles: CSSProperties = { marginTop: "10px", width: "80%" };
@@ -28,7 +30,8 @@ const Home = () => {
       <motion.div className={styles.home} transition={{ duration: 0.5 }}>
         <div className={styles.heading}>
           <img
-            src={`${assetPath}/animeccha-${mode}.svg`}
+            alt="A"
+            src={mode === "light" ? lightIcon : darkIcon}
             width="40"
             height="40"
           ></img>
