@@ -2,29 +2,3 @@
   background: var(--color-primary-bg);
   width: 100vw;
 }
-.backBtn {
-  height: 35px;
-  position: fixed;
-  left: 20px;
-  cursor: pointer;
-  border-radius: 50%;
-  filter: contrast(0.5);
-  top: 10px;
-  z-index: 1000;
-  width: 40px;
-}
-.backBtnDark {
-  filter: invert(1) contrast(0.5);
-}
-.colorModeDark {
-  filter: invert(1);
-  transform: rotate(180deg);
-  transition: ease-in 0.3s;
-}
-.colorModeToggle {
-  cursor: pointer;
-  position: absolute;
-  right: 5px;
-  top: 12px;
-  transition: ease-in 0.3s;
-}

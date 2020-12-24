@@ -19,40 +19,8 @@ function App() {
   const history = useHistory();
   const [mode, setMode] = useLocalStorageState("mode", "dark");
 
-  useEffect(() => {
-    const appContainer = document.querySelector(".appContainer");
-    appContainer?.setAttribute("data-color-mode", mode);
-  }, [mode]);
-
-  const toggleColorMode = () => {
-    const appContainer = document.querySelector(".appContainer");
-    const nextMode = mode === "light" ? "dark" : "light";
-    appContainer?.setAttribute("data-color-mode", nextMode);
-    setMode(nextMode);
-  };
-
   return (
     <div className="appContainer" data-color-mode="light">
-      {!location.pathname.includes("home") && (
-        <img
-          alt="Back Button"
-          className={clsx("backBtn", mode === "dark" && "backBtnDark")}
-          src={`${assetPath}/backBtn.svg`}
-          onClick={() => history.goBack()}
-        ></img>
-      )}
-      {location.pathname.includes("home") && (
-        <img
-          className={clsx(
-            "colorModeToggle",
-            mode === "dark" && "colorModeDark"
-          )}
-          height="30px"
-          width="30px"
-          onClick={toggleColorMode}
-          src={`${assetPath}/yin-yang.svg`}
-        ></img>
-      )}
       <Switch>
         <Route exact path="/home" component={Home} />
         <Route exact path="/anime/:anime" component={Anime} />

@@ -12,16 +12,44 @@ const layoutStyles: CSSProperties = { marginTop: "10px", width: "80%" };
 const Home = () => {
   const [mode, setMode] = useLocalStorageState("mode", "dark");
   const sortedAnimes = animes.sort((a, b) => a.title.localeCompare(b.title));
+  useEffect(() => {
+    const appContainer = document.querySelector(".appContainer");
+    appContainer?.setAttribute("data-color-mode", mode);
+  }, [mode]);
+
+  const toggleColorMode = () => {
+    const appContainer = document.querySelector(".appContainer");
+    const nextMode = mode === "light" ? "dark" : "light";
+    appContainer?.setAttribute("data-color-mode", nextMode);
+    setMode(nextMode);
+  };
   return (
     <>
       <motion.div className={styles.home} transition={{ duration: 0.5 }}>
-        <motion.span
-          className={styles.homeHeading}
-          initial={{ x: "-100vw" }}
-          animate={{ x: 0 }}
-        >
-          Animeccha
-        </motion.span>
+        <div className={styles.heading}>
+          <img
+            src={`${assetPath}/animeccha-${mode}.svg`}
+            width="40"
+            height="40"
+          ></img>
+          <motion.span
+            className={styles.homeHeading}
+            initial={{ x: "-100vw" }}
+            animate={{ x: 0 }}
+          >
+            nimeccha
+          </motion.span>
+        </div>
+        <img
+          className={clsx(
+            styles.colorModeToggle,
+            mode === "dark" && styles.colorModeDark
+          )}
+          height="30px"
+          width="30px"
+          onClick={toggleColorMode}
+          src={`${assetPath}/yin-yang.svg`}
+        ></img>
         <Layout layoutStyles={layoutStyles}>
           {sortedAnimes.map((anime: IAnimeCard) => {
             const { path, title, thumbnailUrl } = anime;
