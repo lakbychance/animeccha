@@ -7,6 +7,7 @@ import {
   AnimePathParameters,
   IAnimeCard,
 } from "../../config/constants";
+import { useLocalStorageState } from "../../hooks";
 import styles from "./Anime.module.css";
 
 const layoutStyles: CSSProperties = { marginTop: "10px", width: "80%" };
@@ -14,6 +15,12 @@ const layoutStyles: CSSProperties = { marginTop: "10px", width: "80%" };
 const Anime = () => {
   const { anime } = useParams<AnimePathParameters>();
   const history = useHistory();
+  const [mode] = useLocalStorageState("mode", "dark");
+
+  useEffect(() => {
+    const appContainer = document.querySelector(".appContainer");
+    appContainer?.setAttribute("data-color-mode", mode);
+  }, [mode]);
 
   useEffect(() => {
     if (!anime || !animeMap[anime]) {
