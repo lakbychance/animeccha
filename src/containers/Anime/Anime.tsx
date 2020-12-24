@@ -22,6 +22,9 @@ const Anime = () => {
     }
   }, [anime, history]);
   const animeDetail = animeMap[anime];
+  const sortedMontages = animeDetail.montages?.sort((a, b) =>
+    a.title.localeCompare(b.title)
+  );
   return (
     <motion.div className={styles.anime} transition={{ duration: 0.5 }}>
       {animeDetail && (
@@ -34,7 +37,7 @@ const Anime = () => {
             {animeDetail.title}
           </motion.span>
           <Layout layoutStyles={layoutStyles}>
-            {animeDetail.montages.map((montage: IAnimeCard) => {
+            {sortedMontages.map((montage: IAnimeCard) => {
               const { path, title, thumbnailUrl } = montage;
               return (
                 <Link key={title} to={path}>

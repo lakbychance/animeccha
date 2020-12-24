@@ -11,7 +11,7 @@ const layoutStyles: CSSProperties = { marginTop: "10px", width: "80%" };
 
 const Home = () => {
   const [mode, setMode] = useLocalStorageState("mode", "dark");
-
+  const sortedAnimes = animes.sort((a, b) => a.title.localeCompare(b.title));
   return (
     <>
       <motion.div className={styles.home} transition={{ duration: 0.5 }}>
@@ -23,7 +23,7 @@ const Home = () => {
           Animeccha
         </motion.span>
         <Layout layoutStyles={layoutStyles}>
-          {animes.map((anime: IAnimeCard) => {
+          {sortedAnimes.map((anime: IAnimeCard) => {
             const { path, title, thumbnailUrl } = anime;
             return (
               <Link key={title} to={`/anime/${path}`}>

@@ -43,6 +43,7 @@ export const ONEPUNCHMAN = "onepunchman";
 export const ATTACKONTITAN = "attackontitan";
 export const BUNGOSTRAYDOGS = "bungostraydogs";
 export const HAIKYUU = "haikyuu";
+export const MOBPYSCHO100 = "mobpyscho100";
 
 export enum STATUS {
   IDLE = "idle",
@@ -86,6 +87,11 @@ export const animes: IAnimeCard[] = [
     title: "Haikyuu!!",
     path: HAIKYUU,
     thumbnailUrl: `/${HAIKYUU}/thumbnail.jpg`,
+  },
+  {
+    title: "Mob Pyscho 100",
+    path: MOBPYSCHO100,
+    thumbnailUrl: `/${MOBPYSCHO100}/thumbnail.jpg`,
   },
 ];
 
@@ -185,6 +191,16 @@ export const animeMap: IAnimeMap = {
       },
     ],
   },
+  mobpyscho100: {
+    title: "Mob Pyscho 100",
+    montages: [
+      {
+        path: `${MOBPYSCHO100}/all-vs-shimazaki`,
+        title: "All vs Shimazaki",
+        thumbnailUrl: `/${MOBPYSCHO100}/all-vs-shimazaki/0500.jpg`,
+      },
+    ],
+  },
 };
 
 export const montageMap: IMontageMap = {
@@ -235,6 +251,10 @@ export const montageMap: IMontageMap = {
   "tsukishima-blocks-ushijima": {
     path: `${HAIKYUU}/tsukishima-blocks-ushijima`,
     frames: 405,
+  },
+  "all-vs-shimazaki": {
+    path: `${MOBPYSCHO100}/all-vs-shimazaki`,
+    frames: 500,
   },
 };
 
