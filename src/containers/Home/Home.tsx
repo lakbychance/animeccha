@@ -28,21 +28,19 @@ const Home = () => {
   return (
     <>
       <motion.div className={styles.home} transition={{ duration: 0.5 }}>
-        <div className={styles.heading}>
+        <motion.div
+          className={styles.heading}
+          initial={{ x: "-100vw" }}
+          animate={{ x: 0 }}
+        >
           <img
             alt="A"
             src={mode === "light" ? lightIcon : darkIcon}
             width="40"
             height="40"
           ></img>
-          <motion.span
-            className={styles.homeHeading}
-            initial={{ x: "-100vw" }}
-            animate={{ x: 0 }}
-          >
-            nimeccha
-          </motion.span>
-        </div>
+          <motion.span className={styles.homeHeading}>nimeccha</motion.span>
+        </motion.div>
         <img
           className={clsx(
             styles.colorModeToggle,
