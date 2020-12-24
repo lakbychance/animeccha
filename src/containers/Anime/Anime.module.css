@@ -5,6 +5,7 @@
   height: 100vh;
   width: 100%;
   overflow: auto;
+  padding-bottom: 20px;
 }
 .animeTitle {
   color: var(--color-primary-text);
