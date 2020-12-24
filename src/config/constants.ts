@@ -44,6 +44,7 @@ export const ATTACKONTITAN = "attackontitan";
 export const BUNGOSTRAYDOGS = "bungostraydogs";
 export const HAIKYUU = "haikyuu";
 export const MOBPYSCHO100 = "mobpyscho100";
+export const FULLMETALALCHEMISTBROTHERHOOD = "fullmetalalchemistbrotherhood";
 
 export enum STATUS {
   IDLE = "idle",
@@ -92,6 +93,11 @@ export const animes: IAnimeCard[] = [
     title: "Mob Pyscho 100",
     path: MOBPYSCHO100,
     thumbnailUrl: `/${MOBPYSCHO100}/thumbnail.jpg`,
+  },
+  {
+    title: "Fullmetal Alchemist Brotherhood",
+    path: FULLMETALALCHEMISTBROTHERHOOD,
+    thumbnailUrl: `/${FULLMETALALCHEMISTBROTHERHOOD}/thumbnail.jpg`,
   },
 ];
 
@@ -201,6 +207,16 @@ export const animeMap: IAnimeMap = {
       },
     ],
   },
+  fullmetalalchemistbrotherhood: {
+    title: "Fullmetal Alchemist Brotherhood",
+    montages: [
+      {
+        path: `${FULLMETALALCHEMISTBROTHERHOOD}/mustang-burns-envy`,
+        title: "Mustang burns Envy",
+        thumbnailUrl: `/${FULLMETALALCHEMISTBROTHERHOOD}/mustang-burns-envy/0169.jpg`,
+      },
+    ],
+  },
 };
 
 export const montageMap: IMontageMap = {
@@ -255,6 +271,10 @@ export const montageMap: IMontageMap = {
   "all-vs-shimazaki": {
     path: `${MOBPYSCHO100}/all-vs-shimazaki`,
     frames: 500,
+  },
+  "mustang-burns-envy": {
+    path: `${FULLMETALALCHEMISTBROTHERHOOD}/mustang-burns-envy`,
+    frames: 381,
   },
 };
 
