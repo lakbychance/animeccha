@@ -278,12 +278,38 @@ export const montageMap: IMontageMap = {
   },
 };
 
-export const imagePath =
+const dimensions = {
+  desktop: {
+    width: 1280,
+    height: 720,
+  },
+  mobile: {
+    width: 640,
+    height: 360,
+  },
+};
+
+const cdnBaseUrl = "https://ik.imagekit.io/lapstjup/";
+
+const montageDimensionsPath = `${cdnBaseUrl}tr:w-${
+  window.innerWidth > 960 ? dimensions.desktop.width : dimensions.mobile.width
+},h-${
+  window.innerWidth > 960 ? dimensions.desktop.height : dimensions.mobile.height
+}`;
+
+const thumbnailDimensionsPath = `${cdnBaseUrl}tr:w-480,h-270`;
+
+export const montagePath =
   process.env.NODE_ENV === "production"
-    ? "https://ik.imagekit.io/lapstjup"
+    ? montageDimensionsPath
+    : "http://localhost:8000/anime";
+
+export const thumbnailPath =
+  process.env.NODE_ENV === "production"
+    ? thumbnailDimensionsPath
     : "http://localhost:8000/anime";
 
 export const assetPath =
   process.env.NODE_ENV === "production"
-    ? "https://ik.imagekit.io/lapstjup/assets"
+    ? `${cdnBaseUrl}/assets`
     : "http://localhost:8000/assets";

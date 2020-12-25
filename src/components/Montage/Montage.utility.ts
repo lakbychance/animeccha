@@ -1,4 +1,4 @@
-import { imagePath } from "../../config/constants";
+import { montagePath } from "../../config/constants";
 
 const coverImg = (context: any, img: HTMLImageElement, type: string) => {
   const imgRatio = img.height / img.width;
@@ -32,7 +32,7 @@ const coverImg = (context: any, img: HTMLImageElement, type: string) => {
 };
 
 const currentFrame = (path: string, index: number) =>
-  `${imagePath}/${path}/${index.toString().padStart(4, "0")}.jpg`;
+  `${montagePath}/${path}/${index.toString().padStart(4, "0")}.jpg`;
 
 const preloadImages = (path: string, initial: number, frameCount: number) => {
   const imagePromisesArray: Promise<HTMLImageElement>[] = [];
