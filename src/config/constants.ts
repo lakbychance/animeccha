@@ -145,6 +145,11 @@ export const animeMap: IAnimeMap = {
         title: "Midoriya vs Todoroki",
         thumbnailUrl: `/${BOKUNOHERO}/midoriya-vs-todoroki/0374.jpg`,
       },
+      {
+        path: `${BOKUNOHERO}/midoriya-vs-chisaki`,
+        title: "Midoriya vs Chisaki",
+        thumbnailUrl: `/${BOKUNOHERO}/midoriya-vs-chisaki/0374.jpg`,
+      },
     ],
   },
   demonslayer: {
@@ -284,6 +289,10 @@ export const montageMap: IMontageMap = {
   "vegeta-vs-beerus": {
     path: `${DRAGONBALL}/vegeta-vs-beerus`,
     frames: 500,
+  },
+  "midoriya-vs-chisaki": {
+    path: `${BOKUNOHERO}/midoriya-vs-chisaki`,
+    frames: 457,
   },
 };
 
