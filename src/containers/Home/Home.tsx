@@ -42,6 +42,7 @@ const Home = () => {
           <motion.span className={styles.homeHeading}>nimeccha</motion.span>
         </motion.div>
         <img
+          alt="Yin-Yang symbol"
           className={clsx(
             styles.colorModeToggle,
             mode === "dark" && styles.colorModeDark
