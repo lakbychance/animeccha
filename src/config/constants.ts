@@ -120,6 +120,11 @@ export const animeMap: IAnimeMap = {
         title: "Goku vs Kefla - Kamehameha",
         thumbnailUrl: `/${DRAGONBALL}/goku-kamehameha-kefla/0004.jpg`,
       },
+      {
+        path: `${DRAGONBALL}/vegeta-vs-beerus`,
+        title: "Vegeta vs Beerus",
+        thumbnailUrl: `/${DRAGONBALL}/vegeta-vs-beerus/0307.jpg`,
+      },
     ],
   },
   bokunohero: {
@@ -275,6 +280,10 @@ export const montageMap: IMontageMap = {
   "mustang-burns-envy": {
     path: `${FULLMETALALCHEMISTBROTHERHOOD}/mustang-burns-envy`,
     frames: 381,
+  },
+  "vegeta-vs-beerus": {
+    path: `${DRAGONBALL}/vegeta-vs-beerus`,
+    frames: 500,
   },
 };
 
