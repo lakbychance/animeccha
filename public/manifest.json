@@ -1,5 +1,6 @@
 {
   "name": "Animeccha",
+  "display": "standalone",
   "description": "A web app to scroll through some favorite anime moments",
   "start_url": "./index.html",
   "icons": [
