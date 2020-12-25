@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ErrorBoundary } from "./components";
-import { registerSW } from "./swHelper";
 
 ReactDOM.render(
   <React.StrictMode>
