@@ -12,7 +12,7 @@ const Footer = () => {
         rel="noreferrer"
         target="_blank"
       >
-        <p>Icons by Flaticon - www.flaticon.com</p>
+        <p className={styles.iconsBy}>Icons by Flaticon - www.flaticon.com</p>
       </a>
       <p className={styles.disclaimer}>
         * All the images used for respective anime montages is the hardwork of
