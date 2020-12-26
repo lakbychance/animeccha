@@ -9,6 +9,7 @@ const Footer = () => {
       <a
         className={styles.attributeLink}
         href="https://flaticon.com"
+        rel="noreferrer"
         target="_blank"
       >
         <p>Icons by Flaticon - www.flaticon.com</p>
