@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import React, { CSSProperties, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { AnimeCard, Layout } from "../../components";
@@ -33,16 +32,10 @@ const Anime = () => {
     a.title.localeCompare(b.title)
   );
   return (
-    <motion.div className={styles.anime} transition={{ duration: 0.5 }}>
+    <div className={styles.anime}>
       {animeDetail && (
         <>
-          <motion.span
-            className={styles.animeTitle}
-            initial={{ x: "-100vw" }}
-            animate={{ x: 0 }}
-          >
-            {animeDetail.title}
-          </motion.span>
+          <span className={styles.animeTitle}>{animeDetail.title}</span>
           <Layout layoutStyles={layoutStyles}>
             {sortedMontages.map((montage: IAnimeCard) => {
               const { path, title, thumbnailUrl } = montage;
@@ -55,7 +48,7 @@ const Anime = () => {
           </Layout>
         </>
       )}
-    </motion.div>
+    </div>
   );
 };
 export default Anime;

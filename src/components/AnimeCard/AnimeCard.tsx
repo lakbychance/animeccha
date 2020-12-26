@@ -1,28 +1,12 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { IAnimeCard, thumbnailPath } from "../../config/constants";
 import styles from "./AnimeCard.module.css";
 
 const AnimeCard = ({ title, thumbnailUrl }: Partial<IAnimeCard>) => {
   const [showImage, setShowImage] = useState(false);
 
-  const animeCardVariant = {
-    initial: {
-      opacity: 0,
-      y: "-100vh",
-    },
-    final: {
-      opacity: 1,
-      y: 0,
-    },
-  };
   return (
-    <motion.div
-      variants={animeCardVariant}
-      initial="initial"
-      animate="final"
-      className={styles.animeCard}
-    >
+    <div className={styles.animeCard}>
       <div className={styles.animeThumbnail}>
         <img
           alt={title}
@@ -39,7 +23,7 @@ const AnimeCard = ({ title, thumbnailUrl }: Partial<IAnimeCard>) => {
           </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

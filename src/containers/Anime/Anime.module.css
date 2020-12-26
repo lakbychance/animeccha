@@ -8,6 +8,7 @@
 .animeTitle {
   color: var(--color-primary-text);
   font-size: 2.5rem;
+  margin-top: 10px;
 }
 
 @media only screen and (max-width: 440px) {

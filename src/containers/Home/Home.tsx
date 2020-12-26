@@ -1,7 +1,6 @@
 import React, { CSSProperties, useEffect } from "react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { AnimeCard, Layout } from "../../components";
 import { IAnimeCard, animes, assetPath } from "../../config/constants";
 import { useLocalStorageState } from "../../hooks";
@@ -26,12 +25,8 @@ const Home = () => {
   };
   return (
     <>
-      <motion.div className={styles.home} transition={{ duration: 0.5 }}>
-        <motion.div
-          className={styles.heading}
-          initial={{ x: "-100vw" }}
-          animate={{ x: 0 }}
-        >
+      <div className={styles.home}>
+        <div className={styles.heading}>
           <img
             alt="A"
             className={clsx(mode === "light" && styles.lightMode)}
@@ -39,8 +34,8 @@ const Home = () => {
             width="40"
             height="40"
           ></img>
-          <motion.span className={styles.homeHeading}>nimeccha</motion.span>
-        </motion.div>
+          <span className={styles.homeHeading}>nimeccha</span>
+        </div>
         <img
           alt="Yin-Yang symbol"
           className={clsx(
@@ -62,7 +57,7 @@ const Home = () => {
             );
           })}
         </Layout>
-      </motion.div>
+      </div>
     </>
   );
 };
