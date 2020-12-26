@@ -1,7 +1,7 @@
 .colorModeDark {
   filter: invert(1);
   transform: rotate(180deg);
-  transition: ease-in 0.3s;
+  transition: ease-in 0.2s;
 }
 
 .colorModeToggle {
@@ -9,7 +9,12 @@
   position: absolute;
   right: 14px;
   top: 18px;
-  transition: ease-in 0.3s;
+  transition: ease-in 0.2s;
+}
+.colorModeToggle:focus {
+  outline: none;
+  box-shadow: 0px 0px 4px 4px #1584c5;
+  border-radius: 50%;
 }
 .heading {
   display: flex;

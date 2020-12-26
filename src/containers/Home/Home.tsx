@@ -16,12 +16,20 @@ const Home = () => {
     appContainer?.setAttribute("data-color-mode", mode);
   }, [mode]);
 
+  const handleKey = (event: React.KeyboardEvent) => {
+    const isEnterEvent = event.key === "Enter";
+    if (isEnterEvent) {
+      toggleColorMode();
+    }
+  };
+
   const toggleColorMode = () => {
     const appContainer = document.querySelector(".appContainer");
     const nextMode = mode === "light" ? "dark" : "light";
     appContainer?.setAttribute("data-color-mode", nextMode);
     setMode(nextMode);
   };
+
   return (
     <>
       <div className={styles.home}>
@@ -38,7 +46,9 @@ const Home = () => {
           height="30px"
           width="30px"
           onClick={toggleColorMode}
+          onKeyDown={handleKey}
           src={`${assetPath}/yin-yang.svg`}
+          tabIndex={0}
         ></img>
         <Layout layoutStyles={layoutStyles}>
           {sortedAnimes.map((anime: IAnimeCard) => {
