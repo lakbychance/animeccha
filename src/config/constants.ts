@@ -296,24 +296,21 @@ export const montageMap: IMontageMap = {
   },
 };
 
-const dimensions = {
-  desktop: {
-    width: 960,
-    height: 540,
-  },
-  mobile: {
-    width: 640,
-    height: 360,
-  },
+const getDimenstions = () => {
+  const width = window.innerWidth;
+  if (width >= 960) {
+    return { width: 960, height: 540 };
+  } else if (width >= 640 && width <= 960) {
+    return { width: 640, height: 360 };
+  }
+  return { width: 480, height: 270 };
 };
 
 const cdnBaseUrl = "https://ik.imagekit.io/lapstjup/";
 
-const montageDimensionsPath = `${cdnBaseUrl}tr:w-${
-  window.innerWidth > 960 ? dimensions.desktop.width : dimensions.mobile.width
-},h-${
-  window.innerWidth > 960 ? dimensions.desktop.height : dimensions.mobile.height
-}`;
+const currentDimensions = getDimenstions();
+
+const montageDimensionsPath = `${cdnBaseUrl}tr:w-${currentDimensions.width},h-${currentDimensions.height}`;
 
 const thumbnailDimensionsPath = `${cdnBaseUrl}tr:w-480,h-270`;
 
