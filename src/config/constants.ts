@@ -312,7 +312,7 @@ const currentDimensions = getDimenstions();
 
 const montageDimensionsPath = `${cdnBaseUrl}tr:w-${currentDimensions.width},h-${currentDimensions.height}`;
 
-const thumbnailDimensionsPath = `${cdnBaseUrl}tr:w-480,h-270`;
+const thumbnailDimensionsPath = `${cdnBaseUrl}tr:w-480,h-270,pr-true`;
 
 export const montagePath =
   process.env.NODE_ENV === "production"
