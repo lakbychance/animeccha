@@ -1,6 +1,6 @@
 import React, { CSSProperties, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { AnimeCard, Layout } from "../../components";
+import { AnimeCard, Layout, Logo } from "../../components";
 import {
   animeMap,
   AnimePathParameters,
@@ -33,6 +33,7 @@ const Anime = () => {
   );
   return (
     <div className={styles.anime}>
+      <Logo className={styles.appLogo} mode={mode} />
       {animeDetail && (
         <>
           <span className={styles.animeTitle}>{animeDetail.title}</span>

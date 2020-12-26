@@ -10,7 +10,12 @@
   font-size: 2.5rem;
   margin-top: 10px;
 }
-
+.appLogo {
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  transform: scale(0.6);
+}
 @media only screen and (max-width: 440px) {
   .animeTitle {
     max-width: 200px;

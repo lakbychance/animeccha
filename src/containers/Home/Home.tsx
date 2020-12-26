@@ -1,10 +1,9 @@
 import React, { CSSProperties, useEffect } from "react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
-import { AnimeCard, Layout } from "../../components";
+import { AnimeCard, Layout, Logo } from "../../components";
 import { IAnimeCard, animes, assetPath } from "../../config/constants";
 import { useLocalStorageState } from "../../hooks";
-import darkIcon from "../../assets/icons/animeccha-dark.svg";
 import styles from "./Home.module.css";
 
 const layoutStyles: CSSProperties = { marginTop: "10px", width: "80%" };
@@ -27,13 +26,7 @@ const Home = () => {
     <>
       <div className={styles.home}>
         <div className={styles.heading}>
-          <img
-            alt="A"
-            className={clsx(mode === "light" && styles.lightMode)}
-            src={darkIcon}
-            width="40"
-            height="40"
-          ></img>
+          <Logo mode={mode} />
           <span className={styles.homeHeading}>nimeccha</span>
         </div>
         <img

@@ -1,3 +1,10 @@
+.appLogo {
+  position: fixed;
+  left: 10px;
+  top: 12px;
+  transform: scale(0.6);
+  z-index: 2;
+}
 .canvas {
   position: fixed;
   left: 50%;
