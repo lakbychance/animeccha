@@ -306,13 +306,23 @@ const getDimenstions = () => {
   return { width: 480, height: 270 };
 };
 
+const getHeight = (width: number) => {
+  return Math.floor((9 * width) / 16);
+};
+
 const cdnBaseUrl = "https://ik.imagekit.io/lapstjup/";
 
 const currentDimensions = getDimenstions();
 
-const montageDimensionsPath = `${cdnBaseUrl}tr:w-${currentDimensions.width},h-${currentDimensions.height}`;
+const montageDimensionsPath = `${cdnBaseUrl}tr:w-${Math.min(
+  window.innerWidth,
+  currentDimensions.width
+)},h-${Math.min(getHeight(window.innerWidth), currentDimensions.height)}`;
 
-const thumbnailDimensionsPath = `${cdnBaseUrl}tr:w-480,h-270,pr-true`;
+const thumbnailDimensionsPath = `${cdnBaseUrl}tr:w-${Math.min(
+  window.innerWidth,
+  480
+)},h-${Math.min(getHeight(window.innerWidth), 270)},pr-true`;
 
 export const montagePath =
   process.env.NODE_ENV === "production"
