@@ -111,7 +111,7 @@ const Montage = () => {
 
   const isLoading = status === STATUS.PENDING && !images.current.length;
   const isIdle = status === STATUS.IDLE && !images.current.length;
-  const { frames } = montageMap[montage];
+  const frames = montageMap[montage]?.frames;
   return (
     <>
       <Logo className={styles.appLogo} mode="dark" />

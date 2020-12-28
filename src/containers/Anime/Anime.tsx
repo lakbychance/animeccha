@@ -28,7 +28,7 @@ const Anime = () => {
     }
   }, [anime, history]);
   const animeDetail = animeMap[anime];
-  const sortedMontages = animeDetail.montages?.sort((a, b) =>
+  const sortedMontages = animeDetail?.montages?.sort((a, b) =>
     a.title.localeCompare(b.title)
   );
   return (
