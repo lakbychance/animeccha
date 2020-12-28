@@ -165,6 +165,11 @@ export const animeMap: IAnimeMap = {
         title: "Tanjiro vs Rui",
         thumbnailUrl: `/${DEMONSLAYER}/tanjiro-vs-rui/0057.jpg`,
       },
+      {
+        path: `${DEMONSLAYER}/zenitsu-vs-spider-son`,
+        title: "Zenitsu vs Spider son",
+        thumbnailUrl: `/${DEMONSLAYER}/zenitsu-vs-spider-son/0002.jpg`,
+      },
     ],
   },
   onepunchman: {
@@ -293,6 +298,10 @@ export const montageMap: IMontageMap = {
   "midoriya-vs-chisaki": {
     path: `${BOKUNOHERO}/midoriya-vs-chisaki`,
     frames: 457,
+  },
+  "zenitsu-vs-spider-son": {
+    path: `${DEMONSLAYER}/zenitsu-vs-spider-son`,
+    frames: 500,
   },
 };
 
