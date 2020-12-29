@@ -36,7 +36,7 @@ const Anime = () => {
       <Logo className={styles.appLogo} mode={mode} />
       {animeDetail && (
         <>
-          <span className={styles.animeTitle}>{animeDetail.title}</span>
+          <h1 className={styles.animeTitle}>{animeDetail.title}</h1>
           <Layout layoutStyles={layoutStyles}>
             {sortedMontages.map((montage: IAnimeCard) => {
               const { path, title, thumbnailUrl } = montage;

@@ -12,9 +12,9 @@ const Layout: React.FC<ComponentProps> = ({ children, layoutStyles }) => {
   }, [pathname]);
 
   return (
-    <div className={styles.layout} style={{ ...layoutStyles }}>
+    <main className={styles.layout} style={{ ...layoutStyles }}>
       {children}
-    </div>
+    </main>
   );
 };
 export default Layout;

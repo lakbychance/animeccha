@@ -35,7 +35,7 @@ const Home = () => {
       <div className={styles.home}>
         <div className={styles.heading}>
           <Logo mode={mode} />
-          <span className={styles.homeHeading}>nimeccha</span>
+          <h1 className={styles.homeHeading}>nimeccha</h1>
         </div>
         <img
           alt="Yin-Yang symbol"
