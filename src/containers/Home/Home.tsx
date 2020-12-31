@@ -1,7 +1,7 @@
 import React, { CSSProperties, useEffect } from "react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
-import { AnimeCard, Layout, Logo } from "../../components";
+import { AnimeCard, Header, Layout, Logo } from "../../components";
 import { IAnimeCard, animes, assetPath } from "../../config/constants";
 import { useLocalStorageState } from "../../hooks";
 import styles from "./Home.module.css";
@@ -33,23 +33,22 @@ const Home = () => {
   return (
     <>
       <div className={styles.home}>
-        <div className={styles.heading}>
+        <Header text={"nimeccha"}>
           <Logo mode={mode} />
-          <h1 className={styles.homeHeading}>nimeccha</h1>
-        </div>
-        <img
-          alt="Yin-Yang symbol"
-          className={clsx(
-            styles.colorModeToggle,
-            mode === "dark" && styles.colorModeDark
-          )}
-          height="30px"
-          width="30px"
-          onClick={toggleColorMode}
-          onKeyDown={handleKey}
-          src={`${assetPath}/yin-yang.svg`}
-          tabIndex={0}
-        ></img>
+          <img
+            alt="Yin-Yang symbol"
+            className={clsx(
+              styles.colorModeToggle,
+              mode === "dark" && styles.colorModeDark
+            )}
+            height="30px"
+            width="30px"
+            onClick={toggleColorMode}
+            onKeyDown={handleKey}
+            src={`${assetPath}/yin-yang.svg`}
+            tabIndex={0}
+          ></img>
+        </Header>
         <Layout layoutStyles={layoutStyles}>
           {sortedAnimes.map((anime: IAnimeCard) => {
             const { path, title, thumbnailUrl } = anime;

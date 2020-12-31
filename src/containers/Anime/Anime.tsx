@@ -1,6 +1,6 @@
 import React, { CSSProperties, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { AnimeCard, Layout, Logo } from "../../components";
+import { AnimeCard, Header, Layout, Logo } from "../../components";
 import {
   animeMap,
   AnimePathParameters,
@@ -33,21 +33,20 @@ const Anime = () => {
   );
   return (
     <div className={styles.anime}>
-      <Logo className={styles.appLogo} mode={mode} />
+      <Header text={animeDetail.title}>
+        <Logo className={styles.appLogo} mode={mode} />
+      </Header>
       {animeDetail && (
-        <>
-          <h1 className={styles.animeTitle}>{animeDetail.title}</h1>
-          <Layout layoutStyles={layoutStyles}>
-            {sortedMontages.map((montage: IAnimeCard) => {
-              const { path, title, thumbnailUrl } = montage;
-              return (
-                <Link key={title} to={path}>
-                  <AnimeCard title={title} thumbnailUrl={thumbnailUrl} />
-                </Link>
-              );
-            })}
-          </Layout>
-        </>
+        <Layout layoutStyles={layoutStyles}>
+          {sortedMontages.map((montage: IAnimeCard) => {
+            const { path, title, thumbnailUrl } = montage;
+            return (
+              <Link key={title} to={path}>
+                <AnimeCard title={title} thumbnailUrl={thumbnailUrl} />
+              </Link>
+            );
+          })}
+        </Layout>
       )}
     </div>
   );

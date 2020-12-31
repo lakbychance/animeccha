@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { coverImg, preloadImageBlobUrls, createImage } from "./Montage.utility";
-import { Loader, Logo } from "../../components";
+import { Header, Loader, Logo } from "../../components";
 import {
   assetPath,
   montageMap,
@@ -114,7 +114,9 @@ const Montage = () => {
   const frames = montageMap[montage]?.frames;
   return (
     <>
-      <Logo className={styles.appLogo} mode="dark" />
+      <Header>
+        <Logo className={styles.appLogo} mode="dark" />
+      </Header>
       <motion.div
         style={
           isLoading || isIdle ? { height: "100vh" } : { height: `${frames}vh` }
