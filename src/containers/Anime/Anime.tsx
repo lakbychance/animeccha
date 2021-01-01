@@ -33,20 +33,22 @@ const Anime = () => {
   );
   return (
     <div className={styles.anime}>
-      <Header text={animeDetail.title}>
-        <Logo className={styles.appLogo} mode={mode} />
-      </Header>
       {animeDetail && (
-        <Layout layoutStyles={layoutStyles}>
-          {sortedMontages.map((montage: IAnimeCard) => {
-            const { path, title, thumbnailUrl } = montage;
-            return (
-              <Link key={title} to={path}>
-                <AnimeCard title={title} thumbnailUrl={thumbnailUrl} />
-              </Link>
-            );
-          })}
-        </Layout>
+        <>
+          <Header text={animeDetail.title}>
+            <Logo className={styles.appLogo} mode={mode} />
+          </Header>
+          <Layout layoutStyles={layoutStyles}>
+            {sortedMontages.map((montage: IAnimeCard) => {
+              const { path, title, thumbnailUrl } = montage;
+              return (
+                <Link key={title} to={path}>
+                  <AnimeCard title={title} thumbnailUrl={thumbnailUrl} />
+                </Link>
+              );
+            })}
+          </Layout>
+        </>
       )}
     </div>
   );
