@@ -3,6 +3,7 @@
   "display": "standalone",
   "description": "A web app to scroll through some favorite anime moments",
   "start_url": "./index.html",
+  "short_name": "Animeccha",
   "icons": [
     {
       "src": "/android-icon-36x36.png",
