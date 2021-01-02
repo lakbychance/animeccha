@@ -23,6 +23,7 @@ a:focus {
   --color-secondary-bg: #c3d7f0;
   --color-secondary-text: #1a1a1a;
 }
+
 [data-color-mode="dark"] {
   --color-focus-ring: #5355d4;
   --color-link-hover: #4183c4;
