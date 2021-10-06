@@ -17,6 +17,7 @@
   flex-direction: column;
   height: 150px;
   justify-content: center;
+  width: 100%;
 }
 .iconsBy {
   margin: 0;
