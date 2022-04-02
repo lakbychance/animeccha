@@ -2,9 +2,10 @@ import React, { CSSProperties } from "react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
 import { AnimeCard, Header, Layout, Logo } from "../../components";
-import { IAnimeCard, animes, assetPath } from "../../config/constants";
+import { IAnimeCard, animes } from "../../config/constants";
 import styles from "./Home.module.css";
 import { useColorMode } from "../../components/ColorModeContext/ColorModeContext";
+import yinYang from '../../assets/yin-yang.svg';
 
 const layoutStyles: CSSProperties = { marginTop: "10px", width: "80%" };
 
@@ -33,7 +34,7 @@ const Home = () => {
           width="30px"
           onClick={toggleColorMode}
           onKeyDown={handleKey}
-          src={`${assetPath}/yin-yang.svg`}
+          src={yinYang}
           tabIndex={0}
         ></img>
       </Header>

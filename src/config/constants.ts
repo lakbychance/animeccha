@@ -319,7 +319,7 @@ const getHeight = (width: number) => {
   return Math.floor((9 * width) / 16);
 };
 
-const cdnBaseUrl = "https://ik.imagekit.io/lapstjup/";
+const cdnBaseUrl = "https://ik.imagekit.io/lapstjup/animeccha/";
 
 const currentDimensions = getDimenstions();
 
@@ -342,8 +342,3 @@ export const thumbnailPath =
   process.env.NODE_ENV === "production"
     ? thumbnailDimensionsPath
     : "http://localhost:8000/anime";
-
-export const assetPath =
-  process.env.NODE_ENV === "production"
-    ? `${cdnBaseUrl}/assets`
-    : "http://localhost:8000/assets";

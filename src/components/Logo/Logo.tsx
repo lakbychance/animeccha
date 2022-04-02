@@ -1,4 +1,3 @@
-import React from "react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
 import darkIcon from "../../assets/icons/animeccha-dark.svg";
