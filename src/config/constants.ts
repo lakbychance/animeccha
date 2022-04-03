@@ -5,7 +5,7 @@ export enum STATUS {
   REJECTED = "rejected",
 }
 
-const cdnBaseUrl = "https://ik.imagekit.io/lapstjup/animeccha/tr:w-800,h-450/";
+const cdnBaseUrl = "https://ik.imagekit.io/lapstjup/animeccha/";
 
 export const thumbnailPath =
   process.env.NODE_ENV === "production"

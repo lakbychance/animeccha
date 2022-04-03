@@ -14,7 +14,7 @@ const AnimeCard = ({ title, thumbnailUrl }: Partial<Anime>) => {
           height={450}
           layout='responsive'
           objectFit="cover"
-          src={`${thumbnailPath}${thumbnailUrl}`}
+          src={`${thumbnailPath}${thumbnailUrl}/tr:w-800,h-450`}
           placeholder='blur'
           blurDataURL={`${thumbnailPath}${thumbnailUrl}/tr:bl-30,q-5`}
         />
