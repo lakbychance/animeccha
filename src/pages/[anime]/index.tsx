@@ -22,9 +22,9 @@ const AnimePage = (props: InferGetServerSidePropsType<typeof getServerSideProps>
     return (
         <div className={clsx('md:px-10 lg:px-20 container mx-auto flex flex-col justify-between')}>
             <Header>
-                <div className={clsx('relative pt-4 flex justify-center items-center')}>
-                    <h1 className={clsx('text-4xl font-semibold dark:text-gray-200')}>{animeDetail.title}</h1>
-                    <div className={clsx('absolute left-0 p-4')}><Logo /></div>
+                <div className={clsx('relative pt-4 px-20 md:px-10 flex justify-center items-center')}>
+                    <h1 className={clsx('text-3xl md:text-4xl text-center font-semibold dark:text-gray-200')}>{animeDetail.title}</h1>
+                    <div className={clsx('absolute left-0 top-0 p-4 w-16 h-16')}><Logo /></div>
                 </div>
             </Header>
             <Layout>

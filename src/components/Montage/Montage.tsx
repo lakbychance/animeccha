@@ -100,7 +100,7 @@ const Montage = ({ montage }: { montage: string }) => {
   const frames = montageMap[montage]?.frames;
   return (
     <>
-      <div className={clsx('fixed p-3 z-50')}><Logo /></div>
+      <div className={clsx('fixed p-3 z-50 w-14 h-14')}><Logo /></div>
       <motion.div
         style={
           isLoading || isIdle ? { height: "100vh" } : { height: `${frames}vh` }

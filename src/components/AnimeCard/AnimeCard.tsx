@@ -1,5 +1,5 @@
 import React from "react";
-import { thumbnailPath } from "../../config/constants";
+import { isProd, thumbnailPath } from "../../config/constants";
 import { Anime } from '../../config/anime'
 import Image from 'next/image'
 import clsx from "clsx";
@@ -14,9 +14,9 @@ const AnimeCard = ({ title, thumbnailUrl }: Partial<Anime>) => {
           height={450}
           layout='responsive'
           objectFit="cover"
-          src={`${thumbnailPath}${thumbnailUrl}/tr:w-800,h-450`}
+          src={`${thumbnailPath}${thumbnailUrl}${isProd ? '/tr:w-800,h-450' : ''}`}
           placeholder='blur'
-          blurDataURL={`${thumbnailPath}${thumbnailUrl}/tr:bl-30,q-5`}
+          blurDataURL={`${thumbnailPath}${thumbnailUrl}${isProd ? '/tr:bl-30,q-5' : ''}`}
         />
       </div>
       <p className={clsx('text-center mt-2 font-semibold dark:text-gray-200')}>{title}</p>
