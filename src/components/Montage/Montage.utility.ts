@@ -1,4 +1,4 @@
-import { montagePath } from "../../config/constants";
+import { isProd } from "../../config/constants";
 
 const coverImg = (context: any, img: HTMLImageElement, type: string) => {
   const imgRatio = img.height / img.width;
@@ -31,8 +31,35 @@ const coverImg = (context: any, img: HTMLImageElement, type: string) => {
   }
 };
 
+const getDimenstions = () => {
+  const width = window.innerWidth;
+  if (width >= 960) {
+    return { width: 960, height: 540 };
+  } else if (width >= 640 && width <= 960) {
+    return { width: 640, height: 360 };
+  }
+  return { width: 480, height: 270 };
+};
+
+const getHeight = (width: number) => {
+  return Math.floor((9 * width) / 16);
+};
+
+const cdnBaseUrl = "https://ik.imagekit.io/lapstjup/animeccha/";
+
+const getMontagePath = () => {
+  if (isProd) {
+    const currentDimensions = getDimenstions();
+    return `${cdnBaseUrl}tr:w-${Math.min(
+      window.innerWidth,
+      currentDimensions.width
+    )},h-${Math.min(getHeight(window.innerWidth), currentDimensions.height)}`;
+  }
+  return `http://localhost:8000/anime`;
+}
+
 const currentFrame = (path: string, index: number) =>
-  `${montagePath}/${path}/${index.toString().padStart(4, "0")}.jpg`;
+  `${getMontagePath()}/${path}/${index.toString().padStart(4, "0")}.jpg`;
 
 const preloadImages = (path: string, initial: number, frameCount: number) => {
   const imagePromisesArray: Promise<HTMLImageElement>[] = [];
@@ -93,5 +120,6 @@ export const createImage = (url: string) => {
     img.src = url;
   });
 };
+
 
 export { coverImg, currentFrame, preloadImages };

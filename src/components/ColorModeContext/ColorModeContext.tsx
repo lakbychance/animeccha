@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useLayoutEffect } from "react";
 import { useLocalStorageState } from "../../hooks";
 
 interface ColorModeProviderProps {
@@ -19,26 +19,28 @@ export const useColorMode = () => {
 };
 
 const ColorModeProvider: React.FC<ColorModeProviderProps> = ({
-  container,
   children,
 }) => {
   const [mode, setMode] = useLocalStorageState("mode", "dark");
 
   const toggleColorMode = () => {
     const nextMode = mode === "light" ? "dark" : "light";
-    container?.setAttribute("data-color-mode", nextMode);
     setMode(nextMode);
   };
+
+  useLayoutEffect(() => {
+    if (mode === 'light') {
+      document.documentElement.classList.add('dark');
+    }
+    else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [mode])
 
   const value = {
     mode,
     toggleColorMode,
   };
-
-  useEffect(() => {
-    const appContainer = document.querySelector(".appContainer");
-    appContainer?.setAttribute("data-color-mode", mode);
-  }, [mode]);
 
   return (
     <ColorModeContext.Provider value={value}>

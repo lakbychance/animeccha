@@ -1,19 +1,13 @@
-import React, { CSSProperties, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import styles from "./Layout.module.css";
+import clsx from "clsx";
+import React from "react";
 
-interface ComponentProps {
-  layoutStyles?: CSSProperties;
-}
-const Layout: React.FC<ComponentProps> = ({ children, layoutStyles }) => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+const Layout: React.FC = ({ children }) => {
 
   return (
-    <main className={styles.layout} style={{ ...layoutStyles }}>
-      {children}
+    <main className={clsx('min-h-[calc(100vh-12rem)]')}>
+      <div className={clsx('flex flex-col md:grid md:grid-cols-3 gap-4 p-8')}>
+        {children}
+      </div>
     </main>
   );
 };

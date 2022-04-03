@@ -6,9 +6,9 @@ A project aiming to include my favorite montages across different animes such th
 
 # Installation
 
-Perform `yarn install` to install node_modules.
+Perform `yarn` to install node_modules.
 
 # Running
 
-- Perform `yarn start` to run the frontend.
+- Perform `yarn dev` to run the frontend.
 - Perform `yarn serve` to run the static images server.

@@ -1,19 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import clsx from "clsx";
 import { motion } from "framer-motion";
-import { coverImg, preloadImageBlobUrls, createImage } from "./Montage.utility";
+import { useEffect, useRef, useState } from "react";
 import { Loader, Logo } from "../../components";
-import {
-  montageMap,
-  MontagePathParameters,
-  STATUS,
-} from "../../config/constants";
-import styles from "./Montage.module.css";
-import scrollIndicator from '../../assets/scrollIndicator.svg'
+import { coverImg, createImage, preloadImageBlobUrls } from "../../components/Montage/Montage.utility";
+import { montageMap } from "../../config/anime";
+import { STATUS } from "../../config/constants";
+import styles from './Montage.module.css'
 
-const Montage = () => {
-  const { montage } = useParams<MontagePathParameters>();
-  const history = useHistory();
+const Montage = ({ montage }: { montage: string }) => {
   const [status, setStatus] = useState(STATUS.PENDING);
   const [canScroll, setCanScroll] = useState(false);
   const images = useRef<HTMLImageElement[]>([]);
@@ -22,10 +16,6 @@ const Montage = () => {
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    if (!montage || !montageMap[montage]) {
-      history.push("/home");
-      return;
-    }
     const { frames } = montageMap[montage];
     const html = document.documentElement;
     const canvas = canvasRef.current;
@@ -65,13 +55,9 @@ const Montage = () => {
         window.removeEventListener("scroll", scrollLogic);
       };
     }
-  }, [history, montage, images, canScroll]);
+  }, [montage, images, canScroll]);
 
   useEffect(() => {
-    if (!montage || !montageMap[montage]) {
-      history.push("/home");
-      return;
-    }
     const { path, frames } = montageMap[montage];
     async function getImageElements() {
       const imageBlobUrls: any = await preloadImageBlobUrls(path, 1, frames);
@@ -94,7 +80,7 @@ const Montage = () => {
         }
       });
     };
-  }, [history, montage]);
+  }, [montage]);
 
   useEffect(() => {
     const isLoading = status === STATUS.PENDING;
@@ -114,7 +100,7 @@ const Montage = () => {
   const frames = montageMap[montage]?.frames;
   return (
     <>
-      <Logo className={styles.appLogo} mode="dark" />
+      <div className={clsx('fixed p-3 z-50')}><Logo /></div>
       <motion.div
         style={
           isLoading || isIdle ? { height: "100vh" } : { height: `${frames}vh` }
@@ -125,7 +111,7 @@ const Montage = () => {
       >
         {canScroll && (
           <motion.img
-            src={scrollIndicator}
+            src='/images/scrollIndicator.svg'
             className={styles.scrollIndicator}
             animate={{
               y: [-10, 10],
