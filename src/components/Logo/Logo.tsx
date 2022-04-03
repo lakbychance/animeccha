@@ -1,22 +1,23 @@
 import clsx from "clsx";
-import { Link } from "react-router-dom";
-import darkIcon from "../../assets/icons/animeccha-dark.svg";
-import styles from "./Logo.module.css";
+import Link from 'next/link'
+import Image from 'next/image'
 
 interface ComponentProps {
   className?: string;
   mode: string;
 }
-const Logo = ({ className, mode }: ComponentProps) => {
+const Logo = () => {
   return (
-    <Link className={className} to="/home">
-      <img
-        alt="A"
-        className={clsx(mode === "light" && styles.lightMode)}
-        src={darkIcon}
-        width="40"
-        height="40"
-      ></img>
+    <Link href="/">
+      <a href='/'>
+        <Image
+          alt="Animeccha Logo"
+          height="45px"
+          width="45px"
+          className={clsx('invert dark:invert-0')}
+          src={`/images/animeccha.svg`}
+        />
+      </a>
     </Link>
   );
 };

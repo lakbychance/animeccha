@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { isBrowser } from "../config/constants";
 
 /**
  *
@@ -13,7 +14,7 @@ function useLocalStorageState(
   { serialize = JSON.stringify, deserialize = JSON.parse } = {}
 ) {
   const [state, setState] = useState(() => {
-    const valueInLocalStorage = window.localStorage.getItem(key);
+    const valueInLocalStorage = isBrowser && window.localStorage.getItem(key);
     if (valueInLocalStorage) {
       return deserialize(valueInLocalStorage);
     }
