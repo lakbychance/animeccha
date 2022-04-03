@@ -1,7 +1,6 @@
-import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import React from 'react'
 import { AnimeCard, Header, Layout, Logo } from '../../components'
-import { useColorMode } from '../../components/ColorModeContext/ColorModeContext'
 import { animeMap, Anime } from '../../config/anime'
 interface AnimePageProps {
     anime: string
@@ -13,7 +12,7 @@ interface AnimePageProps {
     anime: string;
 }
 
-const AnimePage = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const AnimePage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     const { anime } = props;
     const animeDetail = animeMap[anime]
     const sortedMontages = animeDetail?.montages?.sort((a, b) =>
@@ -47,7 +46,7 @@ const AnimePage = (props: InferGetServerSidePropsType<typeof getServerSideProps>
 }
 
 
-export const getServerSideProps: GetServerSideProps<AnimePageProps> = async (context) => {
+export const getStaticProps: GetStaticProps<AnimePageProps> = async (context) => {
     const { params } = context
     const anime = params?.anime.toString();
     if (!anime || !animeMap[anime]) {
@@ -57,6 +56,19 @@ export const getServerSideProps: GetServerSideProps<AnimePageProps> = async (con
         props: {
             anime,
         },
+    }
+}
+
+export const getStaticPaths = () => {
+    const animes = Object.keys(animeMap);
+    return {
+        paths: animes.map(anime => {
+            console.log(anime)
+            return {
+                params: { anime }
+            }
+        }),
+        fallback: 'blocking',
     }
 }
 

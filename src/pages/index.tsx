@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Link from 'next/link'
 import { AnimeCard, Header, Layout, Logo } from "../components";
 import { Anime, animes } from '../config/anime';
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import { useColorMode } from "../components/ColorModeContext/ColorModeContext";
 
@@ -10,7 +10,7 @@ interface HomePageProps {
   animes: Anime[]
 }
 
-export default function HomePage({ animes }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function HomePage({ animes }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { toggleColorMode } = useColorMode();
   const sortedAnimes = animes.sort((a, b) => a.title.localeCompare(b.title));
 
@@ -49,7 +49,7 @@ export default function HomePage({ animes }: InferGetServerSidePropsType<typeof 
   );
 }
 
-export const getServerSideProps: GetServerSideProps<HomePageProps> = async () => {
+export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   return {
     props: {
       animes: animes
