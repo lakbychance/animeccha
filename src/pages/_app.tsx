@@ -6,9 +6,8 @@ import { Footer } from '../components';
 import clsx from 'clsx';
 
 function MyApp({ Component, pageProps }: AppProps) {
-    const appRef = useRef<HTMLDivElement>(null);
     return (
-        <ColorModeProvider container={appRef.current}>
+        <ColorModeProvider>
             <div className={clsx('bg-white dark:bg-gray-900')}>
                 <Component {...pageProps} />
                 <Footer />

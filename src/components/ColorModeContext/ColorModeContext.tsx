@@ -1,9 +1,6 @@
 import React, { useContext, useEffect, useLayoutEffect } from "react";
 import { useLocalStorageState } from "../../hooks";
 
-interface ColorModeProviderProps {
-  container: HTMLElement | null;
-}
 
 interface IColorModeContext {
   mode: string;
@@ -18,9 +15,9 @@ export const useColorMode = () => {
   return useContext(ColorModeContext);
 };
 
-const ColorModeProvider: React.FC<ColorModeProviderProps> = ({
+const ColorModeProvider = ({
   children,
-}) => {
+}: any) => {
   const [mode, setMode] = useLocalStorageState("mode", "dark");
 
   const toggleColorMode = () => {
