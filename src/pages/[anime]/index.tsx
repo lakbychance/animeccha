@@ -63,7 +63,6 @@ export const getStaticPaths = () => {
     const animes = Object.keys(animeMap);
     return {
         paths: animes.map(anime => {
-            console.log(anime)
             return {
                 params: { anime }
             }
