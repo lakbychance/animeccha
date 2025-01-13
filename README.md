@@ -1,8 +1,8 @@
 # Animeccha
 
-![Animeccha Desktop](https://github.com/lapstjup/animeccha/blob/main/data/animeccha_desktop.png)
+![Animeccha Desktop](https://ik.imagekit.io/lapstjup/animeccha/animeccha_og.png)
 
-A project aiming to include my favorite montages across different animes such that a user can scroll and go backward and forward through the frames of that montage. 
+A project aiming to include my favorite montages across different animes such that a user can scroll and go backward and forward through the frames of that montage. The whole project is inspired from [this](https://css-tricks.com/lets-make-one-of-those-fancy-scrolling-animations-used-on-apple-product-pages/) article. 
 
 # Installation
 
